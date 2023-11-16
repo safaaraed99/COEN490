@@ -1,0 +1,23 @@
+I_PROPI (uA) = (I_LS1 + I_LS2) (A) * A_IPROPI (uA/A)
+    - I_PROPI = Value in current-sense resistor
+    - I_LSx = Value in low side MOSFETs of H-bridge
+    - A_IPROPI = Current sensing gain (typically 1k uA/A)
+
+V_IPROPI (V) = I_PROPI (uA) * R_IPROPI (Ohm)
+    - V_IPROPI = Value measured in ADC, voltage across R_IPROPI
+    - Assume:
+        1. V_IPROPI should range from 0 to 5V
+        2. I_LS1 + I_LS2 should range from 0 to 1.5A
+    - Then:
+        1. I_PROPI ranges from 0 to 1500 uA
+        2. R_IPROPI ~= 3.33 kOhm
+
+I_TRIP (A) * A_IPROPI (uA/A) = V_VREF (V) / R_IPROPI (Ohm)
+    - I_TRIP = Max current allowed by current regulator
+    - V_VREF = Voltage on VREF input pin
+    - Note that RHS = I_PROPI
+    - Disable current regulation without disabling current regulation by setting V_VREF and R_IPROPI s.t. I_TRIP is never reached
+
+Things to verify:
+    1. Okay to use whole range of ADC and assume current will never exceed 1.5A? Or should sacrifice accuracy for safety margin?
+    2. What value for bulk capacitance?
