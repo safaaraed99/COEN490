@@ -2,7 +2,7 @@
 
   (uuid 95b3b742-4e3c-474f-a930-b4350b376fcb)
 
-  (paper "A4")
+  (paper "USLetter")
 
   (lib_symbols
     (symbol "Connector_Generic:Conn_01x03" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
