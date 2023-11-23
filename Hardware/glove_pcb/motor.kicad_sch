@@ -624,7 +624,7 @@
     (property "Reference" "C5" (at 64.77 26.67 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "1000uF" (at 63.5 30.48 0)
+    (property "Value" "1mF" (at 64.77 29.21 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "" (at 61.9252 31.75 0)
