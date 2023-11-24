@@ -4,6 +4,12 @@
 
   (paper "USLetter")
 
+  (title_block
+    (title "Hand Rehabilitation Glove Companion Board")
+    (date "2023-11-24")
+    (company "COEN 490 Team 15")
+  )
+
   (lib_symbols
   )
 
