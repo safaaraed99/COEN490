@@ -481,12 +481,20 @@
       "Motor"
     ],
     [
+      "244d4343-af6d-4477-97fd-05de712328be",
+      "Motor2"
+    ],
+    [
       "bbbc9975-a050-48bd-8c18-11f2eff17087",
       "Flex"
     ],
     [
       "ecec443b-784e-4f7b-9f78-072e3afadba0",
       "Controller"
+    ],
+    [
+      "cc511a49-678e-4f62-8b05-bdef2fe6dbf9",
+      "Bluetooth"
     ]
   ],
   "text_variables": {}
