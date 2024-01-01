@@ -1,0 +1,24 @@
+I_PROPI (uA) = (I_LS1 + I_LS2) (A) * A_IPROPI (uA/A)
+    - I_PROPI = Current coming out of IPROPI pin
+    - I_LSx = Value in low side MOSFETs of H-bridge
+    - A_IPROPI = Current sensing gain (typically 1k uA/A)
+
+V_IPROPI (V) = I_PROPI (uA) * R_IPROPI (Ohm)
+    - V_IPROPI = Value measured in ADC, voltage across R_IPROPI
+    - R_IPROPI = Resistance between IPROPI pin and ground
+
+I_TRIP (A) * A_IPROPI (uA/A) = V_VREF (V) / R_IPROPI (Ohm)
+    - I_TRIP = Max current allowed by current regulator
+    - V_VREF = Voltage on VREF input pin (max 3.6V)
+    - Note that RHS = I_PROPI
+    - Disable current regulation without disabling current regulation by setting V_VREF and R_IPROPI s.t. I_TRIP is never reached
+
+Calculations:
+Use maximum recommended V_VREF value of 3.6 V (pin maxes out at 5V but this is recommended max for continuous operation)
+Choose I_TRIP = 1A (motor rated for ~0.6A and stalls at ~1.7A)
+R_IPROPI = 3.6 kOhm
+Gives maximum V_IPROPI of 3.6 V
+
+Alternative I_TRIP = 0.8A
+R_IPROPI = 4.5 kOhm
+V_IPROPI = 3.6V

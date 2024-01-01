@@ -1,0 +1,122 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 747ff5f3-d342-40b0-8e4e-75b3a3063e75)
+
+  (paper "USLetter")
+
+  (title_block
+    (title "Hand Rehabilitation Glove Companion Board")
+    (date "2023-11-24")
+    (company "COEN 490 Team 15")
+  )
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 177.8 101.6) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 244d4343-af6d-4477-97fd-05de712328be)
+    (property "Sheetname" "Motor2" (at 177.8 100.8884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "motor2.kicad_sch" (at 177.8 140.2846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "4"))
+      )
+    )
+  )
+
+  (sheet (at 50.8 50.8) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid bb851f0c-1642-4d25-8477-c10dae73eac4)
+    (property "Sheetname" "Power" (at 50.8 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "power.kicad_sch" (at 50.8 89.4846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "2"))
+      )
+    )
+  )
+
+  (sheet (at 114.3 50.8) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid bbbc9975-a050-48bd-8c18-11f2eff17087)
+    (property "Sheetname" "Flex" (at 114.3 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "flex.kicad_sch" (at 114.3 89.4846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "5"))
+      )
+    )
+  )
+
+  (sheet (at 177.8 50.8) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39)
+    (property "Sheetname" "Motor" (at 177.8 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "motor.kicad_sch" (at 177.8 89.4846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "3"))
+      )
+    )
+  )
+
+  (sheet (at 114.3 101.6) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid cc511a49-678e-4f62-8b05-bdef2fe6dbf9)
+    (property "Sheetname" "Bluetooth" (at 114.3 100.8884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "bluetooth.kicad_sch" (at 114.3 140.2846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "7"))
+      )
+    )
+  )
+
+  (sheet (at 50.8 101.6) (size 50.8 38.1) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid ecec443b-784e-4f7b-9f78-072e3afadba0)
+    (property "Sheetname" "Controller" (at 50.8 100.8884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "controller.kicad_sch" (at 50.8 140.2846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "glove_pcb"
+        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75" (page "6"))
+      )
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

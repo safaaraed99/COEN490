@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Glove_Footprints")(type "KiCad")(uri "${KIPRJMOD}/Glove_Footprints.pretty")(options "")(descr ""))
+)
