@@ -897,7 +897,7 @@
   (symbol (lib_id "power:GND") (at 193.04 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 002acc29-df47-4e1c-95c2-e43c9e162edd)
-    (property "Reference" "#PWR?" (at 193.04 111.76 0)
+    (property "Reference" "#PWR038" (at 193.04 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 193.04 110.49 0)
@@ -912,9 +912,6 @@
     (pin "1" (uuid b33fd64f-b0f7-4d56-818f-ac0a38963983))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR038") (unit 1)
         )
@@ -925,13 +922,13 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 248.92 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 01a0ecb1-44fb-4bd1-82e4-3482712102ff)
-    (property "Reference" "J?" (at 251.46 48.26 0)
+    (property "Reference" "J6" (at 251.46 48.26 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 251.46 50.8 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 248.92 48.26 0)
+    (property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical" (at 248.92 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 248.92 48.26 0)
@@ -941,9 +938,6 @@
     (pin "2" (uuid 9abca934-79b5-42a9-b1d9-90d8a693314e))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "J?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "J6") (unit 1)
         )
@@ -954,13 +948,13 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 123.19 46.99 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0d880e64-4813-4086-93bc-b90768a546dc)
-    (property "Reference" "J?" (at 125.73 46.99 0)
+    (property "Reference" "J5" (at 125.73 46.99 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "Conn_01x02" (at 125.73 49.53 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 123.19 46.99 0)
+    (property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical" (at 123.19 46.99 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 123.19 46.99 0)
@@ -970,9 +964,6 @@
     (pin "2" (uuid 1f497600-7447-418a-bc5a-70c6ec7612ac))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "J?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "J5") (unit 1)
         )
@@ -983,7 +974,7 @@
   (symbol (lib_id "Glove_Symbols:DRV8876PWPR") (at 217.17 69.85 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1e8778ec-6540-44fd-84fb-c683b1ed39c7)
-    (property "Reference" "U?" (at 217.17 31.75 0)
+    (property "Reference" "U7" (at 217.17 31.75 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "DRV8876PWPR" (at 217.17 34.29 0)
@@ -1014,9 +1005,6 @@
     (pin "9" (uuid 71cf2670-e88b-489b-9c50-58d8fd1362b8))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "U?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "U7") (unit 1)
         )
@@ -1027,7 +1015,7 @@
   (symbol (lib_id "power:GND") (at 114.3 48.26 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 1eec4ec0-fc17-4480-a71c-f33858fe6967)
-    (property "Reference" "#PWR?" (at 114.3 54.61 0)
+    (property "Reference" "#PWR031" (at 114.3 54.61 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 114.3 53.34 0)
@@ -1042,9 +1030,6 @@
     (pin "1" (uuid b952c87c-28f8-41bb-b5da-87f0baa61ba4))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR031") (unit 1)
         )
@@ -1055,7 +1040,7 @@
   (symbol (lib_id "power:GND") (at 113.03 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 2894cfdc-5656-42c3-a07e-434904cab707)
-    (property "Reference" "#PWR?" (at 113.03 102.87 0)
+    (property "Reference" "#PWR035" (at 113.03 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 101.6 0)
@@ -1070,9 +1055,6 @@
     (pin "1" (uuid af57a417-86d1-44ca-a1bc-f6d0d24c10fc))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR035") (unit 1)
         )
@@ -1083,13 +1065,13 @@
   (symbol (lib_id "Device:C_Polarized") (at 49.53 34.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 345656b4-69ce-499a-a9ba-2ad57e9918a1)
-    (property "Reference" "C?" (at 53.34 33.02 0)
+    (property "Reference" "C20" (at 53.34 33.02 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1mF" (at 53.34 35.56 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 50.4952 38.1 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" (at 50.4952 38.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 49.53 34.29 0)
@@ -1099,9 +1081,6 @@
     (pin "2" (uuid 1772625d-8339-41fa-a30e-60f87955a627))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C20") (unit 1)
         )
@@ -1112,13 +1091,13 @@
   (symbol (lib_id "Device:C") (at 64.77 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 387a9e72-2b2b-4a75-9a4b-946593caa51d)
-    (property "Reference" "C?" (at 66.04 41.91 0)
+    (property "Reference" "C24" (at 66.04 41.91 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 66.04 46.99 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 65.7352 48.26 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 65.7352 48.26 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 64.77 44.45 0)
@@ -1128,9 +1107,6 @@
     (pin "2" (uuid 13b6d411-b0aa-412d-b9aa-b5c9104eaa51))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C24") (unit 1)
         )
@@ -1141,7 +1117,7 @@
   (symbol (lib_id "power:GND") (at 68.58 88.9 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 3af57146-0d3d-4e0e-87e2-afb69816dcfc)
-    (property "Reference" "#PWR?" (at 68.58 95.25 0)
+    (property "Reference" "#PWR033" (at 68.58 95.25 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 64.77 90.17 0)
@@ -1156,9 +1132,6 @@
     (pin "1" (uuid caa222c8-29de-49d2-9e2c-89166bfe6759))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR033") (unit 1)
         )
@@ -1169,13 +1142,13 @@
   (symbol (lib_id "Device:R") (at 40.64 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 42048927-7bb6-4747-87cc-43b8d51e1a92)
-    (property "Reference" "R?" (at 43.18 100.33 0)
+    (property "Reference" "R18" (at 43.18 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "3.6k" (at 43.18 102.87 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 38.862 101.6 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 38.862 101.6 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 40.64 101.6 0)
@@ -1185,9 +1158,6 @@
     (pin "2" (uuid e5704441-86f5-491e-ada9-b3d756f11f7c))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R18") (unit 1)
         )
@@ -1198,13 +1168,13 @@
   (symbol (lib_id "Device:C") (at 186.69 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 46586071-f413-4626-ad8c-c204a34d6110)
-    (property "Reference" "C?" (at 190.5 34.29 0)
+    (property "Reference" "C23" (at 190.5 34.29 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 190.5 36.83 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 187.6552 39.37 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 187.6552 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 186.69 35.56 0)
@@ -1214,9 +1184,6 @@
     (pin "2" (uuid 13d7f4b0-a38d-41fe-9953-35658a04ca43))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C23") (unit 1)
         )
@@ -1227,13 +1194,13 @@
   (symbol (lib_id "Device:R") (at 67.31 99.06 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 4f57b5aa-ac06-45ed-aa3e-03c3389dbd49)
-    (property "Reference" "R?" (at 69.85 97.79 0)
+    (property "Reference" "R16" (at 69.85 97.79 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 69.85 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 65.532 99.06 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 65.532 99.06 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 67.31 99.06 0)
@@ -1243,9 +1210,6 @@
     (pin "2" (uuid 408a465b-2d4a-423c-8b87-891cc08663a2))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R16") (unit 1)
         )
@@ -1256,7 +1220,7 @@
   (symbol (lib_id "power:GND") (at 175.26 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 57afcf60-a795-4d1f-9f03-44cc9efc14b8)
-    (property "Reference" "#PWR?" (at 175.26 50.8 0)
+    (property "Reference" "#PWR030" (at 175.26 50.8 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 175.26 49.53 0)
@@ -1271,9 +1235,6 @@
     (pin "1" (uuid a33cf68e-57df-4f4f-bd27-f31673ac6342))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR030") (unit 1)
         )
@@ -1284,13 +1245,13 @@
   (symbol (lib_id "Device:C_Polarized") (at 175.26 35.56 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 695559ee-5ab9-437d-a30c-f54fa0b3b264)
-    (property "Reference" "C?" (at 179.07 34.29 0)
+    (property "Reference" "C22" (at 179.07 34.29 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "1mF" (at 179.07 36.83 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 176.2252 39.37 0)
+    (property "Footprint" "Capacitor_THT:CP_Radial_D10.0mm_P5.00mm" (at 176.2252 39.37 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 175.26 35.56 0)
@@ -1300,9 +1261,6 @@
     (pin "2" (uuid 93378e7e-84cc-4fae-b66c-2130d2d3c136))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C22") (unit 1)
         )
@@ -1313,13 +1271,13 @@
   (symbol (lib_id "Device:C") (at 60.96 34.29 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6eae4467-2519-4c03-86e6-751464120cd1)
-    (property "Reference" "C?" (at 64.77 33.02 0)
+    (property "Reference" "C21" (at 64.77 33.02 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 64.77 35.56 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 61.9252 38.1 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 61.9252 38.1 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 60.96 34.29 0)
@@ -1329,9 +1287,6 @@
     (pin "2" (uuid 34a67315-182e-4f60-8a71-1892228001e4))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C21") (unit 1)
         )
@@ -1342,7 +1297,7 @@
   (symbol (lib_id "power:GND") (at 67.31 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 781ccda4-2026-4944-b083-2be489c5b70b)
-    (property "Reference" "#PWR?" (at 67.31 110.49 0)
+    (property "Reference" "#PWR037" (at 67.31 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 67.31 109.22 0)
@@ -1357,9 +1312,6 @@
     (pin "1" (uuid 4da1f86f-dbae-4c78-90cc-fd21950e9939))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR037") (unit 1)
         )
@@ -1370,13 +1322,13 @@
   (symbol (lib_id "Device:R") (at 57.15 77.47 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 891f42b3-685c-4320-ba96-d7f1e4b5e54e)
-    (property "Reference" "R?" (at 59.69 76.2 0)
+    (property "Reference" "R14" (at 59.69 76.2 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 59.69 78.74 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 55.372 77.47 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 55.372 77.47 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 57.15 77.47 0)
@@ -1386,9 +1338,6 @@
     (pin "2" (uuid 1691c578-5c05-4b2f-9278-e016ce99d66b))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R14") (unit 1)
         )
@@ -1399,13 +1348,13 @@
   (symbol (lib_id "Device:R") (at 182.88 78.74 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8a3205d6-da12-439a-84e1-9082064b4762)
-    (property "Reference" "R?" (at 185.42 77.47 0)
+    (property "Reference" "R15" (at 185.42 77.47 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 185.42 80.01 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 181.102 78.74 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 181.102 78.74 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 182.88 78.74 0)
@@ -1415,9 +1364,6 @@
     (pin "2" (uuid e1afe331-cd8f-41c3-832f-4ae6d3eab204))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R15") (unit 1)
         )
@@ -1428,13 +1374,13 @@
   (symbol (lib_id "Device:R") (at 166.37 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 92d1cd43-4050-4408-92d9-ea8ec3466361)
-    (property "Reference" "R?" (at 168.91 101.6 0)
+    (property "Reference" "R19" (at 168.91 101.6 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "3.6k" (at 168.91 104.14 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 164.592 102.87 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 164.592 102.87 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 166.37 102.87 0)
@@ -1444,9 +1390,6 @@
     (pin "2" (uuid 9d301158-be7f-486d-921b-11d48d193636))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R19") (unit 1)
         )
@@ -1457,7 +1400,7 @@
   (symbol (lib_id "power:GND") (at 49.53 43.18 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9e00718a-e791-4793-bb14-feb938769afe)
-    (property "Reference" "#PWR?" (at 49.53 49.53 0)
+    (property "Reference" "#PWR029" (at 49.53 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 49.53 48.26 0)
@@ -1472,9 +1415,6 @@
     (pin "1" (uuid 59991201-ff8c-44d6-8eef-19d0340775ee))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR029") (unit 1)
         )
@@ -1485,13 +1425,13 @@
   (symbol (lib_id "Device:C") (at 240.03 76.2 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid a7af6cce-64ad-4e8e-bb3f-bc1e97358a13)
-    (property "Reference" "C?" (at 241.3 73.66 0)
+    (property "Reference" "C27" (at 241.3 73.66 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.022uF" (at 241.3 78.74 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 240.9952 80.01 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 240.9952 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 240.03 76.2 0)
@@ -1501,9 +1441,6 @@
     (pin "2" (uuid cf6a4176-36eb-4742-bc6f-b99d5efd5ffb))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C27") (unit 1)
         )
@@ -1514,7 +1451,7 @@
   (symbol (lib_id "power:GND") (at 166.37 107.95 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c08f739b-4aed-41a6-890e-61c5ac3b4268)
-    (property "Reference" "#PWR?" (at 166.37 114.3 0)
+    (property "Reference" "#PWR040" (at 166.37 114.3 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 166.37 113.03 0)
@@ -1529,9 +1466,6 @@
     (pin "1" (uuid 20d4a528-0036-48f6-bc23-a06a7500fa52))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR040") (unit 1)
         )
@@ -1542,13 +1476,13 @@
   (symbol (lib_id "Device:R") (at 193.04 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c4a3f8ee-8a8f-47ef-9fe1-425ef58cb631)
-    (property "Reference" "R?" (at 195.58 99.06 0)
+    (property "Reference" "R17" (at 195.58 99.06 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "10k" (at 195.58 101.6 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 191.262 100.33 90)
+    (property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder" (at 191.262 100.33 90)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 193.04 100.33 0)
@@ -1558,9 +1492,6 @@
     (pin "2" (uuid 0770cbaf-360e-480b-9886-c190bc43de35))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "R?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "R17") (unit 1)
         )
@@ -1571,7 +1502,7 @@
   (symbol (lib_id "power:GND") (at 238.76 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid c8783e1b-b1a7-42cd-b07b-f9e043922d10)
-    (property "Reference" "#PWR?" (at 238.76 104.14 0)
+    (property "Reference" "#PWR036" (at 238.76 104.14 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 238.76 102.87 0)
@@ -1586,9 +1517,6 @@
     (pin "1" (uuid bd626c1a-5893-4b72-8e5a-57bd803d7a74))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR036") (unit 1)
         )
@@ -1599,7 +1527,7 @@
   (symbol (lib_id "power:GND") (at 240.03 49.53 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid cc3b2d78-3ba8-45d1-b0bc-8a4fee31f1ea)
-    (property "Reference" "#PWR?" (at 240.03 55.88 0)
+    (property "Reference" "#PWR032" (at 240.03 55.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 240.03 54.61 0)
@@ -1614,9 +1542,6 @@
     (pin "1" (uuid e1f479d8-3566-4f96-b946-6540480337c1))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR032") (unit 1)
         )
@@ -1627,13 +1552,13 @@
   (symbol (lib_id "Device:C") (at 114.3 74.93 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid ce99109f-64d5-4cc5-9cbe-66b0ddb9990a)
-    (property "Reference" "C?" (at 115.57 72.39 0)
+    (property "Reference" "C26" (at 115.57 72.39 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.022uF" (at 115.57 77.47 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 115.2652 78.74 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 115.2652 78.74 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 114.3 74.93 0)
@@ -1643,9 +1568,6 @@
     (pin "2" (uuid e2d1c198-6b91-4847-8604-ac9cabc062be))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C26") (unit 1)
         )
@@ -1656,13 +1578,13 @@
   (symbol (lib_id "Device:C") (at 190.5 45.72 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid cfe11b18-44b2-4db9-97f1-0eb24d85726f)
-    (property "Reference" "C?" (at 191.77 43.18 0)
+    (property "Reference" "C25" (at 191.77 43.18 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 191.77 48.26 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 191.4652 49.53 0)
+    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 191.4652 49.53 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 190.5 45.72 0)
@@ -1672,9 +1594,6 @@
     (pin "2" (uuid 820fd0e0-3042-46f9-a92b-dd0a45b76f92))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "C?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "C25") (unit 1)
         )
@@ -1685,7 +1604,7 @@
   (symbol (lib_id "power:GND") (at 40.64 106.68 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d3958205-9ebe-4f9e-a8b7-4712f5e77fb6)
-    (property "Reference" "#PWR?" (at 40.64 113.03 0)
+    (property "Reference" "#PWR039" (at 40.64 113.03 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 40.64 111.76 0)
@@ -1700,9 +1619,6 @@
     (pin "1" (uuid 370008bf-4f7a-4f4f-8bec-336f9e7d201d))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR039") (unit 1)
         )
@@ -1713,7 +1629,7 @@
   (symbol (lib_id "power:GND") (at 194.31 90.17 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e0bfc0c3-6077-4598-a4f8-9ed03b3e77aa)
-    (property "Reference" "#PWR?" (at 194.31 96.52 0)
+    (property "Reference" "#PWR034" (at 194.31 96.52 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 190.5 91.44 0)
@@ -1728,9 +1644,6 @@
     (pin "1" (uuid 276c046e-fcdf-42b8-8106-58421498698d))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "#PWR?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "#PWR034") (unit 1)
         )
@@ -1741,7 +1654,7 @@
   (symbol (lib_id "Glove_Symbols:DRV8876PWPR") (at 91.44 68.58 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid fbe8e162-8416-440a-bb5c-e65a3ff9c23a)
-    (property "Reference" "U?" (at 91.44 30.48 0)
+    (property "Reference" "U6" (at 91.44 30.48 0)
       (effects (font (size 1.524 1.524)))
     )
     (property "Value" "DRV8876PWPR" (at 91.44 33.02 0)
@@ -1772,9 +1685,6 @@
     (pin "9" (uuid 8a8850ee-9cf7-46c8-97dd-179893cfc26d))
     (instances
       (project "glove_pcb"
-        (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "U?") (unit 1)
-        )
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/244d4343-af6d-4477-97fd-05de712328be"
           (reference "U6") (unit 1)
         )
