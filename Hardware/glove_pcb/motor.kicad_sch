@@ -6,7 +6,7 @@
 
   (title_block
     (title "Motor Drivers (1/2)")
-    (date "2023-11-24")
+    (date "2024-01-24")
     (company "COEN 490 Team 15")
   )
 
@@ -1091,7 +1091,7 @@
       (effects (font (size 1.27 1.27)) (justify right) hide)
     )
   )
-  (global_label "UC_MOTOR_PH1" (shape input) (at 190.5 57.15 180) (fields_autoplaced)
+  (global_label "UC_MOTOR_PH2" (shape input) (at 190.5 57.15 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 2b3f6dec-b85d-4fc6-9545-daceb018ca42)
     (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 172.8191 57.15 0)
@@ -1860,10 +1860,10 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 134.62 133.35 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 99b8d54a-4927-4e40-b856-0414b17ee0ee)
-    (property "Reference" "J4" (at 137.16 133.35 0)
+    (property "Reference" "J6" (at 137.16 133.35 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x02" (at 137.16 135.89 0)
+    (property "Value" "0436500200" (at 137.16 135.89 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical" (at 134.62 133.35 0)
@@ -1877,7 +1877,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "J4") (unit 1)
+          (reference "J6") (unit 1)
         )
       )
     )
@@ -1886,10 +1886,10 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 134.62 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 9bb1542c-0ee4-46d5-b249-df9f906c0403)
-    (property "Reference" "J2" (at 137.16 40.64 0)
+    (property "Reference" "J4" (at 137.16 40.64 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x02" (at 137.16 43.18 0)
+    (property "Value" "0436500200" (at 137.16 43.18 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical" (at 134.62 40.64 0)
@@ -1903,7 +1903,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "J2") (unit 1)
+          (reference "J4") (unit 1)
         )
       )
     )
@@ -2065,10 +2065,10 @@
   (symbol (lib_id "Connector_Generic:Conn_01x02") (at 247.65 40.64 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid d0e6a246-e765-4579-920e-76f841f9110a)
-    (property "Reference" "J3" (at 250.19 40.64 0)
+    (property "Reference" "J5" (at 250.19 40.64 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "Conn_01x02" (at 250.19 43.18 0)
+    (property "Value" "0436500200" (at 250.19 43.18 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Connector_Molex:Molex_Micro-Fit_3.0_43650-0215_1x02_P3.00mm_Vertical" (at 247.65 40.64 0)
@@ -2082,7 +2082,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/c30ce3a0-a40a-4a3c-9b4e-a16a5a73dc39"
-          (reference "J3") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
