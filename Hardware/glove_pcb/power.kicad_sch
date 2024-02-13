@@ -1760,7 +1760,7 @@
     (property "Value" "TCR2EF33_LMCT" (at 93.98 90.17 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "SOT-25   SMV_TOS" (at 71.12 97.79 0)
+    (property "Footprint" "Glove_Footprints:SOT-25   SMV_TOS" (at 71.12 97.79 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "Datasheet" "TCR2EF33_LMCT" (at 71.12 97.79 0)
