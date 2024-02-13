@@ -6,7 +6,8 @@
 
   (title_block
     (title "Hand Rehabilitation Glove Companion Board")
-    (date "2023-11-24")
+    (date "2024-01-24")
+    (rev "3")
     (company "COEN 490 Team 15")
   )
 
