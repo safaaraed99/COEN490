@@ -1408,7 +1408,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x07_Odd_Even") (at 44.45 39.37 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 38446fd3-af0e-4efe-908b-d987afb7ec06)
-    (property "Reference" "J9" (at 43.18 25.4 0)
+    (property "Reference" "J5" (at 43.18 25.4 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "302-R141" (at 43.18 27.94 0)
@@ -1437,7 +1437,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/bbbc9975-a050-48bd-8c18-11f2eff17087"
-          (reference "J9") (unit 1)
+          (reference "J5") (unit 1)
         )
       )
     )
@@ -1767,7 +1767,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x07_Odd_Even") (at 44.45 135.89 0) (mirror y) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid bb965292-d262-4a73-9e63-b2e5ba682efe)
-    (property "Reference" "J10" (at 43.18 121.92 0)
+    (property "Reference" "J6" (at 43.18 121.92 0)
       (effects (font (size 1.27 1.27)))
     )
     (property "Value" "302-R141" (at 43.18 124.46 0)
@@ -1796,7 +1796,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/bbbc9975-a050-48bd-8c18-11f2eff17087"
-          (reference "J10") (unit 1)
+          (reference "J6") (unit 1)
         )
       )
     )
