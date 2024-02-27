@@ -6,7 +6,8 @@
 
   (title_block
     (title "Power Supply")
-    (date "2024-01-24")
+    (date "2024-02-27")
+    (rev "4")
     (company "COEN 490 Team 15")
   )
 
