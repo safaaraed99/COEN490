@@ -6,7 +6,8 @@
 
   (title_block
     (title "Bluetooth Communication")
-    (date "2024-01-24")
+    (date "2024-02-27")
+    (rev "4")
     (company "COEN 490 Team 15")
   )
 
@@ -1039,7 +1040,7 @@
   (symbol (lib_id "Device:C") (at 36.83 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 0031e650-6abc-4259-b8ba-ef27d129eb21)
-    (property "Reference" "C53" (at 39.37 100.33 0)
+    (property "Reference" "C55" (at 39.37 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 39.37 104.14 0)
@@ -1056,7 +1057,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "C53") (unit 1)
+          (reference "C55") (unit 1)
         )
       )
     )
@@ -1065,7 +1066,7 @@
   (symbol (lib_id "power:+5V") (at 231.14 102.87 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 02b021a9-b004-4d3b-85bc-6b132682f77c)
-    (property "Reference" "#PWR0106" (at 231.14 106.68 0)
+    (property "Reference" "#PWR0108" (at 231.14 106.68 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 233.68 100.33 0)
@@ -1081,7 +1082,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0106") (unit 1)
+          (reference "#PWR0108") (unit 1)
         )
       )
     )
@@ -1090,7 +1091,7 @@
   (symbol (lib_id "Device:C") (at 218.44 100.33 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 084fbe8d-a5fd-4886-85a8-300a4cfa58ac)
-    (property "Reference" "C52" (at 220.98 99.06 0)
+    (property "Reference" "C54" (at 220.98 99.06 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 220.98 102.87 0)
@@ -1107,7 +1108,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "C52") (unit 1)
+          (reference "C54") (unit 1)
         )
       )
     )
@@ -1116,7 +1117,7 @@
   (symbol (lib_id "power:+5V") (at 31.75 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 0db40d8d-231b-4f7a-8659-b54f323931f3)
-    (property "Reference" "#PWR0103" (at 31.75 101.6 0)
+    (property "Reference" "#PWR0105" (at 31.75 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 31.75 92.71 0)
@@ -1132,7 +1133,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0103") (unit 1)
+          (reference "#PWR0105") (unit 1)
         )
       )
     )
@@ -1141,7 +1142,7 @@
   (symbol (lib_id "power:+3.3V") (at 132.08 53.34 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 11c059b5-d9ef-4006-8c38-d897fb6ed6be)
-    (property "Reference" "#PWR098" (at 132.08 57.15 0)
+    (property "Reference" "#PWR0100" (at 132.08 57.15 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 132.08 48.26 0)
@@ -1157,7 +1158,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR098") (unit 1)
+          (reference "#PWR0100") (unit 1)
         )
       )
     )
@@ -1166,7 +1167,7 @@
   (symbol (lib_id "power:GND") (at 158.75 111.76 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 19306c72-b25a-4c33-8ff5-e57fe122948a)
-    (property "Reference" "#PWR0113" (at 158.75 118.11 0)
+    (property "Reference" "#PWR0115" (at 158.75 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 154.94 114.3 0)
@@ -1182,7 +1183,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0113") (unit 1)
+          (reference "#PWR0115") (unit 1)
         )
       )
     )
@@ -1191,7 +1192,7 @@
   (symbol (lib_id "power:+5V") (at 147.32 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 31aa9948-f947-4cb3-b706-bf654d1e8a5d)
-    (property "Reference" "#PWR0105" (at 147.32 101.6 0)
+    (property "Reference" "#PWR0107" (at 147.32 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+5V" (at 147.32 92.71 0)
@@ -1207,7 +1208,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0105") (unit 1)
+          (reference "#PWR0107") (unit 1)
         )
       )
     )
@@ -1246,7 +1247,7 @@
   (symbol (lib_id "Device:C") (at 152.4 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 4c9d3f1f-07f8-4cfc-8a68-8d98e096bb74)
-    (property "Reference" "C55" (at 154.94 100.33 0)
+    (property "Reference" "C57" (at 154.94 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 154.94 104.14 0)
@@ -1263,7 +1264,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "C55") (unit 1)
+          (reference "C57") (unit 1)
         )
       )
     )
@@ -1298,7 +1299,7 @@
   (symbol (lib_id "power:GND") (at 152.4 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 5af0b783-19da-4eff-8236-de24d969b345)
-    (property "Reference" "#PWR0110" (at 152.4 111.76 0)
+    (property "Reference" "#PWR0112" (at 152.4 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 152.4 110.49 0)
@@ -1314,7 +1315,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0110") (unit 1)
+          (reference "#PWR0112") (unit 1)
         )
       )
     )
@@ -1323,7 +1324,7 @@
   (symbol (lib_id "power:GND") (at 48.26 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 5ee04b9c-43f2-4319-9f8e-584ba1652bed)
-    (property "Reference" "#PWR0111" (at 48.26 115.57 0)
+    (property "Reference" "#PWR0113" (at 48.26 115.57 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 44.45 111.76 0)
@@ -1339,7 +1340,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0111") (unit 1)
+          (reference "#PWR0113") (unit 1)
         )
       )
     )
@@ -1400,7 +1401,7 @@
   (symbol (lib_id "power:GND") (at 113.03 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6aead889-db3e-4976-8dbf-59fe49512748)
-    (property "Reference" "#PWR0109" (at 113.03 111.76 0)
+    (property "Reference" "#PWR0111" (at 113.03 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 113.03 110.49 0)
@@ -1416,7 +1417,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0109") (unit 1)
+          (reference "#PWR0111") (unit 1)
         )
       )
     )
@@ -1425,7 +1426,7 @@
   (symbol (lib_id "power:+3.3V") (at 119.38 97.79 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 6cdd6168-d504-4990-a693-ed55e24e0531)
-    (property "Reference" "#PWR0104" (at 119.38 101.6 0)
+    (property "Reference" "#PWR0106" (at 119.38 101.6 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 119.38 92.71 0)
@@ -1441,7 +1442,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0104") (unit 1)
+          (reference "#PWR0106") (unit 1)
         )
       )
     )
@@ -1450,7 +1451,7 @@
   (symbol (lib_id "power:GND") (at 218.44 104.14 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 700bc166-9622-4d45-bc90-1d29abc3e9fe)
-    (property "Reference" "#PWR0107" (at 218.44 110.49 0)
+    (property "Reference" "#PWR0109" (at 218.44 110.49 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 218.44 109.22 0)
@@ -1466,7 +1467,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0107") (unit 1)
+          (reference "#PWR0109") (unit 1)
         )
       )
     )
@@ -1481,7 +1482,7 @@
     (property "Value" "Jumper_2_Open" (at 119.38 76.2 90)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "" (at 116.84 74.93 0)
+    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" (at 116.84 74.93 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (at 116.84 74.93 0)
@@ -1501,7 +1502,7 @@
   (symbol (lib_id "Device:C") (at 113.03 101.6 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 7e199522-f6b7-4eca-841c-bf2664993e83)
-    (property "Reference" "C54" (at 115.57 100.33 0)
+    (property "Reference" "C56" (at 115.57 100.33 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "0.1uF" (at 115.57 104.14 0)
@@ -1518,7 +1519,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "C54") (unit 1)
+          (reference "C56") (unit 1)
         )
       )
     )
@@ -1527,7 +1528,7 @@
   (symbol (lib_id "power:+3.3V") (at 165.1 60.96 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 80a7c448-e7cc-44a3-ac01-ecf1667821bd)
-    (property "Reference" "#PWR099" (at 165.1 64.77 0)
+    (property "Reference" "#PWR0101" (at 165.1 64.77 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 165.1 55.88 0)
@@ -1543,7 +1544,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR099") (unit 1)
+          (reference "#PWR0101") (unit 1)
         )
       )
     )
@@ -1552,7 +1553,7 @@
   (symbol (lib_id "power:+3.3V") (at 224.79 96.52 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid 8b3b0fba-23bf-4df8-a5f0-78aba7d08680)
-    (property "Reference" "#PWR0102" (at 224.79 100.33 0)
+    (property "Reference" "#PWR0104" (at 224.79 100.33 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 224.79 91.44 0)
@@ -1568,7 +1569,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0102") (unit 1)
+          (reference "#PWR0104") (unit 1)
         )
       )
     )
@@ -1577,7 +1578,7 @@
   (symbol (lib_id "power:GND") (at 165.1 63.5 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid 96441e4e-3ab8-412e-82f9-65d5ef7a895c)
-    (property "Reference" "#PWR0100" (at 165.1 69.85 0)
+    (property "Reference" "#PWR0102" (at 165.1 69.85 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 168.91 64.77 0)
@@ -1593,7 +1594,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0100") (unit 1)
+          (reference "#PWR0102") (unit 1)
         )
       )
     )
@@ -1608,7 +1609,7 @@
     (property "Value" "BM70BLES1FC2-0B04AA" (at 80.01 24.13 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Footprint" "Glove_Footprints:BM70BLES1FC2_MCH" (at 46.99 31.75 0)
+    (property "Footprint" "Glove_Footprints:BM70BLES1FC2_MCH(2)" (at 46.99 31.75 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
     (property "Datasheet" "BM70BLES1FC2-0B04AA" (at 46.99 31.75 0)
@@ -1659,7 +1660,7 @@
   (symbol (lib_id "power:+3.3V") (at 128.27 26.67 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid abd1d268-7d9a-4666-a52f-1c54ae9c5ec8)
-    (property "Reference" "#PWR094" (at 128.27 30.48 0)
+    (property "Reference" "#PWR096" (at 128.27 30.48 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 128.27 21.59 0)
@@ -1675,7 +1676,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR094") (unit 1)
+          (reference "#PWR096") (unit 1)
         )
       )
     )
@@ -1684,7 +1685,7 @@
   (symbol (lib_id "power:GND") (at 116.84 81.28 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid b5201b89-4c42-4b43-85c8-e2957be0bbe6)
-    (property "Reference" "#PWR0101" (at 116.84 87.63 0)
+    (property "Reference" "#PWR0103" (at 116.84 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 120.65 82.55 0)
@@ -1700,7 +1701,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0101") (unit 1)
+          (reference "#PWR0103") (unit 1)
         )
       )
     )
@@ -1709,7 +1710,7 @@
   (symbol (lib_id "power:GND") (at 36.83 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced)
     (uuid bbbf12f4-bc97-4184-bf4d-08af25983971)
-    (property "Reference" "#PWR0108" (at 36.83 111.76 0)
+    (property "Reference" "#PWR0110" (at 36.83 111.76 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 36.83 110.49 0)
@@ -1725,7 +1726,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0108") (unit 1)
+          (reference "#PWR0110") (unit 1)
         )
       )
     )
@@ -1764,7 +1765,7 @@
   (symbol (lib_id "power:+3.3V") (at 34.29 41.91 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid daf57f93-4618-4c0d-a39b-dd4f71b96aa4)
-    (property "Reference" "#PWR097" (at 34.29 45.72 0)
+    (property "Reference" "#PWR099" (at 34.29 45.72 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3.3V" (at 30.48 39.37 0)
@@ -1780,7 +1781,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR097") (unit 1)
+          (reference "#PWR099") (unit 1)
         )
       )
     )
@@ -1815,7 +1816,7 @@
   (symbol (lib_id "power:GND") (at 41.91 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid e8b55656-7e1b-45b3-b030-5eb0e30f0763)
-    (property "Reference" "#PWR095" (at 41.91 43.18 0)
+    (property "Reference" "#PWR097" (at 41.91 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 38.1 38.1 0)
@@ -1831,7 +1832,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR095") (unit 1)
+          (reference "#PWR097") (unit 1)
         )
       )
     )
@@ -1867,7 +1868,7 @@
   (symbol (lib_id "power:GND") (at 116.84 36.83 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f9510644-ff6a-42c1-8b41-10831326289f)
-    (property "Reference" "#PWR096" (at 116.84 43.18 0)
+    (property "Reference" "#PWR098" (at 116.84 43.18 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 120.65 38.1 0)
@@ -1883,7 +1884,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR096") (unit 1)
+          (reference "#PWR098") (unit 1)
         )
       )
     )
@@ -1892,7 +1893,7 @@
   (symbol (lib_id "power:GND") (at 104.14 109.22 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
     (uuid f9ec7a43-06ad-49b3-a234-91fa48bdcc53)
-    (property "Reference" "#PWR0112" (at 104.14 115.57 0)
+    (property "Reference" "#PWR0114" (at 104.14 115.57 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (at 107.95 110.49 0)
@@ -1908,7 +1909,7 @@
     (instances
       (project "glove_pcb"
         (path "/747ff5f3-d342-40b0-8e4e-75b3a3063e75/cc511a49-678e-4f62-8b05-bdef2fe6dbf9"
-          (reference "#PWR0112") (unit 1)
+          (reference "#PWR0114") (unit 1)
         )
       )
     )
