@@ -60,11 +60,17 @@ They must be kept high when idle, and should be pulled low by the master (our mi
 Only one CS pin should be low at a time.
 
 ## ATMega328PB Programming Guide
+[Datasheet](https://ww1.microchip.com/downloads/aemDocuments/documents/MCU08/ProductDocuments/DataSheets/40001906C.pdf)
 
 ## ADC Usage Guide
+[Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/21295d.pdf)
+
+[Useful guide] (https://engineerworkshop.com/blog/interfacing-an-8-bit-microcontroller-with-a-10-bit-device-over-the-spi-protocol/)
 
 ## Motor Driver Usage Guide
+[Datasheet](https://www.ti.com/lit/ds/symlink/drv8876.pdf?ts=1710028903037&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FDRV8876)
 
 ## IMU Usage Guide
 
 ## Bluetooth Usage Guide
+[Datasheet](https://ww1.microchip.com/downloads/en/DeviceDoc/BM70-71-Bluetooth-Low-Energy-BLE-Module-Data-Sheet-DS60001372J.pdf)
