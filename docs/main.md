@@ -42,7 +42,7 @@ This document contains information that will help with programming the ATMega328
 | PD4 | Motor 5 fault (GPIO interrupt) |
 | PD5 | Timer/counter 0 output channel B (PWM) |
 | PD6 | Timer/counter 0 output channel A (PWM) |
-| PD7 | Motor PMODE control (GPIO) |
+| PD7 | Motor phase control 3 (GPIO) |
 | PE0 | Motor 3 fault (GPIO interrupt) |
 | PE1 | Motor 4 fault (GPIO interrupt) |
 | PE2 | ADC 1 chip select (GPIO active-low) |
