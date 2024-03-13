@@ -7,6 +7,8 @@
 
 #include <avr/io.h>
 
+#include "spi.h"
+
 void setup_gpio(void);
 
 int main(void)
