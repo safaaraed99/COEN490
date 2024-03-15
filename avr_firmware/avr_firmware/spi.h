@@ -30,12 +30,29 @@ enum
 	POT_PINKY_3 = 13
 };
 
+// N.B. The motor channels were connected in reverse order to make the PCB layout easier
+enum
+{
+	MOTOR_PINKY = 0,
+	MOTOR_RING = 1,
+	MOTOR_MIDDLE = 2,
+	MOTOR_INDEX = 3,
+	MOTOR_THUMB = 4
+};
+
 typedef struct adc_readings 
 {
 	uint16_t potentiometers[14];
 	uint16_t motors[5];
 } adc_readings_t;
 
+/**
+ * \brief Configures the pins and registers for SPI1.
+ * 
+ * \param 
+ * 
+ * \return void
+ */
 void setup_spi(void);
 
 /**
