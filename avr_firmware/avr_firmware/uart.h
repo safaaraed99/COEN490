@@ -15,7 +15,7 @@ void setup_uart(void);
 
 void debug_send(char* msg);
 
-void debug_recv(char* dest, size_t dest_len);
+size_t debug_recv(char* dest, size_t dest_len);
 
 // TODO Bluetooth communication
 

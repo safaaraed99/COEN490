@@ -8,12 +8,57 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <string.h>
+#include <stdio.h>
 
 #include "spi.h"
 #include "uart.h"
 
 void setup_gpio(void);
 
+// READ ME!!!!!!!!
+// Uncomment ONLY ONE of the below main functions. Each one is commented with what it does.
+// There's the real main function for the final firmware and a bunch of tests for individual features.
+// Make sure you build after uncommenting the one you want and commenting the others, then upload.
+
+// DEBUG TEST
+int main(void)
+{
+	setup_gpio();
+	setup_spi();
+	setup_uart();
+	
+	char sendbuf[50] = {0};
+	char recvbuf[50] = {0};
+	
+	sei();
+	while (1)
+	{
+		// Write a bunch of data
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 10; j > 0; j--)
+			{
+				int sum = i + j;
+				int diff = i - j;
+				snprintf(sendbuf, 49, "%d2 + %d2 = %d2; %d2 - %d2 = %d2", i, j, sum, i, j, diff);
+				debug_send(sendbuf);
+				
+				// Busy wait, try reducing the limit to see how fast the data is pumped out of the debug send buffer
+				for (uint32_t wait = 0; wait < 1000000; wait++);
+			}
+		}
+		
+		// Echo back anything received
+		size_t recv_cnt = debug_recv(recvbuf, 49);
+		if (recv_cnt)
+		{
+			debug_send(recvbuf);
+		}
+	}
+}
+
+/*
+// REAL MAIN
 int main(void)
 {
 	// SETUP
@@ -55,6 +100,7 @@ int main(void)
 		}
 	}
 }
+*/
 
 void setup_gpio(void)
 {

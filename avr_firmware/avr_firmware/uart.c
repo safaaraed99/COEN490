@@ -39,12 +39,14 @@ void debug_send(char* msg)
 	}
 }
 
-void debug_recv(char* dest, size_t dest_len)
+size_t debug_recv(char* dest, size_t dest_len)
 {
+	size_t bytes_read;
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 	{
-		circ_buf_read(&debug_recv_buf, dest, dest_len);
+		bytes_read = circ_buf_read(&debug_recv_buf, dest, dest_len);
 	}
+	return bytes_read;
 }
 
 // Fires when transmit data register is empty, indicating we can pump in the next byte
