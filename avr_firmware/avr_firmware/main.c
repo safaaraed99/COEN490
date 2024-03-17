@@ -6,9 +6,11 @@
  */ 
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 #include <string.h>
 
 #include "spi.h"
+#include "uart.h"
 
 void setup_gpio(void);
 
@@ -17,6 +19,7 @@ int main(void)
 	// SETUP
 	setup_gpio();
 	setup_spi();
+	setup_uart();
 	
 	adc_readings_t current_readings;
 	adc_readings_t old_readings;
@@ -26,6 +29,7 @@ int main(void)
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
+	sei();
 	// LOOP
 	while (1)
 	{
