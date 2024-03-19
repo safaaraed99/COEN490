@@ -13,20 +13,33 @@
 
 #include "circular_buffer.h"
 
-#define DEBUG_UBRR 1
+// The clock rate of the system is 8 MHz.
+// When not running the UART at double speed, UBRR = f_osc / (16*Baud) - 1
+// The below value is for 19200 baud.
+#define DEBUG_UBRR 25
 
+// Circular buffers for debug send and receive.
+// When the main loop sends data, it's copied into the buffer.
+// Data is asynchronously transmitted out of the buffer in the background using interrupts.
 static volatile circular_buffer_t debug_send_buf;
 static volatile circular_buffer_t debug_recv_buf;
 
 void setup_uart(void)
 {
+	// Initialize circular buffers for debug
 	circ_buf_init(&debug_send_buf);
 	circ_buf_init(&debug_recv_buf);
 	
 	// TODO Configure USART0 registers (BT module)
 	
-	// TODO Configure USART1 registers (Debug serial)
-	UCSR1B |= (1<<RXCIE1) | (1<<UDRIE1) | (1<<RXEN1) | (1<<TXEN1);
+	/* UART1 (Debug serial) initialization */
+	// Enable RX complete, TX data register empty interrupts. Enable receiver and transmitter.
+	UCSR1B = (1<<RXCIE1) | (1<<UDRIE1) | (1<<RXEN1) | (1<<TXEN1);
+	// Set asynchronous, no parity, 1 stop bit, 8 data bits.
+	UCSR1C = (1<<UCSZ11) | (1<<UCSZ10);
+	// Set baud rate.
+	UBRR1H = (unsigned char)(DEBUG_UBRR >> 8);
+	UBRR1L = (unsigned char)DEBUG_UBRR;
 }
 
 void debug_send(char* msg)
