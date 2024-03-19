@@ -32,7 +32,7 @@ void setup_uart(void)
 	
 	// TODO Configure USART0 registers (BT module)
 	
-	/* UART1 (Debug serial) initialization */
+	/* USART1 (Debug serial) initialization */
 	// Enable RX complete, TX data register empty interrupts. Enable receiver and transmitter.
 	UCSR1B = (1<<RXCIE1) | (1<<UDRIE1) | (1<<RXEN1) | (1<<TXEN1);
 	// Set asynchronous, no parity, 1 stop bit, 8 data bits.
