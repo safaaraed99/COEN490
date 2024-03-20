@@ -2,7 +2,7 @@
  * spi.c
  *
  * Created: 2024-03-13 4:24:27 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 #include "spi.h"
@@ -18,7 +18,7 @@ void setup_spi(void)
 	SPCR1 = (1<<SPE1) | (1<<MSTR1) | (1<<SPR1);
 }
 
-int read_pot(uint8_t pot_index, adc_readings_t *dest)
+int read_pot(potentiometer pot_index, adc_readings_t *dest)
 {
 	if (pot_index > POT_PINKY_3 || dest == NULL)
 	{
@@ -39,7 +39,7 @@ int read_pot(uint8_t pot_index, adc_readings_t *dest)
 	return 0;
 }
 
-int read_motor(uint8_t motor_index, adc_readings_t *dest)
+int read_motor(motor motor_index, adc_readings_t *dest)
 {
 	if (motor_index > MOTOR_THUMB || dest == NULL)
 	{

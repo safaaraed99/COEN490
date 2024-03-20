@@ -2,7 +2,7 @@
  * uart.h
  *
  * Created: 2024-03-16 2:07:45 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 

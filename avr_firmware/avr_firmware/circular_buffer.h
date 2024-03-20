@@ -2,7 +2,7 @@
  * circular_buffer.h
  *
  * Created: 2024-03-16 2:44:39 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 

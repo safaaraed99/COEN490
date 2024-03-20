@@ -2,7 +2,7 @@
  * uart.c
  *
  * Created: 2024-03-16 2:15:14 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 #include "uart.h"

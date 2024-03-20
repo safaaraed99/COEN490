@@ -2,7 +2,7 @@
  * avr_firmware.c
  *
  * Created: 2024-03-10 5:43:47 PM
- * Author : matt_
+ * Author : Matthew Faigan
  */ 
 
 #include <avr/io.h>
