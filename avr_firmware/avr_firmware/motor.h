@@ -19,6 +19,6 @@ int set_motor_speed(motor motor_num, uint8_t duty);
 
 int set_motor_phase(motor motor_num, motor_direction direction);
 
-
+int set_motor_enable(uint8_t state);
 
 #endif /* MOTOR_H_ */

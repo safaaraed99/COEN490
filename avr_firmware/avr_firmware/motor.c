@@ -130,3 +130,19 @@ int set_motor_phase(motor motor_num, motor_direction direction)
 	}
 	return 0;
 }
+
+int set_motor_enable(uint8_t state)
+{
+	if (state != 0 && state != 1)
+	{
+		return 1;
+	}
+	
+	uint8_t mask = 1<<PORTB0;
+	uint8_t new_bit = state<<PORTB0;
+	uint8_t current = PORTB;
+	
+	PORTB = (current & ~mask) | (new_bit & mask);
+	
+	return 0;
+}
