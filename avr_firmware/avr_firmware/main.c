@@ -5,13 +5,17 @@
  * Author : Matthew Faigan
  */ 
 
+#define F_CPU 8000000UL
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <string.h>
 #include <stdio.h>
+#include <util/delay.h>
 
 #include "spi.h"
 #include "uart.h"
+#include "motor.h"
 
 void setup_gpio(void);
 
@@ -19,6 +23,7 @@ void setup_gpio(void);
 // Uncomment ONLY ONE of the below main functions. Each one is commented with what it does.
 // There's the real main function for the final firmware and a bunch of tests for individual features.
 // Make sure you build after uncommenting the one you want and commenting the others, then upload.
+
 
 // DEBUG TEST
 int main(void)
@@ -40,11 +45,11 @@ int main(void)
 			{
 				int sum = i + j;
 				int diff = i - j;
-				snprintf(sendbuf, 49, "%d2 + %d2 = %d2; %d2 - %d2 = %d2", i, j, sum, i, j, diff);
+				snprintf(sendbuf, 50, "%d2 + %d2 = %d2; %d2 - %d2 = %d2", i, j, sum, i, j, diff);
 				debug_send(sendbuf);
 				
 				// Busy wait, try reducing the limit to see how fast the data is pumped out of the debug send buffer
-				for (uint32_t wait = 0; wait < 1000000; wait++);
+				_delay_ms(100);
 			}
 		}
 		
@@ -57,8 +62,9 @@ int main(void)
 	}
 }
 
+
 /*
-// REAL MAIN
+// SPI TEST
 int main(void)
 {
 	// SETUP
@@ -74,6 +80,8 @@ int main(void)
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
+	char sendbuf[50] = {0};
+	
 	sei();
 	// LOOP
 	while (1)
@@ -84,23 +92,50 @@ int main(void)
 		{
 			old_readings.potentiometers[pot_index] = current_readings.potentiometers[pot_index];
 			read_pot(pot_index, &current_readings);
+			snprintf(sendbuf, 50, "Pot %d read %d", pot_index, current_readings.potentiometers[pot_index]);
 			pot_index++;
 		}
 		else if (motor_index <= MOTOR_THUMB)
 		{
 			old_readings.motors[motor_index] = current_readings.motors[motor_index];
 			read_motor(motor_index, &current_readings);
+			snprintf(sendbuf, 50, "Motor %d read %d", motor_index, current_readings.motors[motor_index]);
 			motor_index++;
 		}
+		debug_send(sendbuf);
 		
 		if (pot_index > POT_PINKY_3 && motor_index > MOTOR_THUMB)
 		{
 			pot_index = 0;
 			motor_index = 0;
 		}
+		
+		_delay_ms(100);
 	}
 }
 */
+
+/*
+// MOTOR TEST
+int main(void)
+{
+	// SETUP
+	setup_gpio();
+	setup_spi();
+	setup_uart();
+	setup_motors();
+	
+	char sendbuf[50] = {0};
+	
+	sei();
+	// LOOP
+	while (1)
+	{
+		// TODO
+	}
+}
+*/
+
 
 void setup_gpio(void)
 {
