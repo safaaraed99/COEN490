@@ -31,6 +31,11 @@ void setup_uart(void)
 	circ_buf_init(&debug_recv_buf);
 	
 	// TODO Configure USART0 registers (BT module)
+	// These values are temporarily copied from debug
+	UCSR0B = (1<<RXEN0) | (1<<TXEN0);
+	UCSR1C = (1<UCSZ01) | (1<<UCSZ00);
+	UBRR1H = (unsigned char)(DEBUG_UBRR >> 8);
+	UBRR1L = (unsigned char)DEBUG_UBRR;
 	
 	/* USART1 (Debug serial) initialization */
 	// Enable RX complete, TX data register empty interrupts. Enable receiver and transmitter.

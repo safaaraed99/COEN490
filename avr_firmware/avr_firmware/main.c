@@ -31,6 +31,7 @@ int main(void)
 	setup_gpio();
 	setup_spi();
 	setup_uart();
+	setup_motors();
 	
 	char sendbuf[50] = {0};
 	char recvbuf[50] = {0};
@@ -71,6 +72,7 @@ int main(void)
 	setup_gpio();
 	setup_spi();
 	setup_uart();
+	setup_motors();
 	
 	adc_readings_t current_readings;
 	adc_readings_t old_readings;
