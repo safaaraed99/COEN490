@@ -25,6 +25,7 @@ void setup_gpio(void);
 // Make sure you build after uncommenting the one you want and commenting the others, then upload.
 
 
+/*
 // DEBUG TEST
 int main(void)
 {
@@ -46,7 +47,7 @@ int main(void)
 			{
 				int sum = i + j;
 				int diff = i - j;
-				snprintf(sendbuf, 50, "%d2 + %d2 = %d2; %d2 - %d2 = %d2", i, j, sum, i, j, diff);
+				snprintf(sendbuf, 50, "%d + %d = %d; %d - %d = %d", i, j, sum, i, j, diff);
 				debug_send(sendbuf);
 				
 				// Busy wait, try reducing the limit to see how fast the data is pumped out of the debug send buffer
@@ -62,9 +63,9 @@ int main(void)
 		}
 	}
 }
+*/
 
 
-/*
 // SPI TEST
 int main(void)
 {
@@ -76,46 +77,42 @@ int main(void)
 	
 	adc_readings_t current_readings;
 	adc_readings_t old_readings;
-	uint8_t pot_index = 0;
-	uint8_t motor_index = 0;
 	
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
 	char sendbuf[50] = {0};
+	char recvbuf[50] = {0};
+		
+	uint8_t index = 0;
 	
 	sei();
 	// LOOP
 	while (1)
 	{
-		// ADC reading
-		// Read one value per iteration of the main loop to not block for too long
-		if (pot_index <= POT_PINKY_3)
+		size_t bytes_read = debug_recv(recvbuf, 49);
+		if (bytes_read > 0)
 		{
-			old_readings.potentiometers[pot_index] = current_readings.potentiometers[pot_index];
-			read_pot(pot_index, &current_readings);
-			snprintf(sendbuf, 50, "Pot %d read %d", pot_index, current_readings.potentiometers[pot_index]);
-			pot_index++;
+			int conv = atoi(recvbuf);
+			if (conv >= 0 && conv <= 13)
+			{
+				index = (uint8_t)conv;
+			}
+			else
+			{
+				strncpy(sendbuf, "Index malformed or out of range", 49);
+				debug_send(sendbuf);
+			}
 		}
-		else if (motor_index <= MOTOR_THUMB)
-		{
-			old_readings.motors[motor_index] = current_readings.motors[motor_index];
-			read_motor(motor_index, &current_readings);
-			snprintf(sendbuf, 50, "Motor %d read %d", motor_index, current_readings.motors[motor_index]);
-			motor_index++;
-		}
+		
+		read_pot(index, &current_readings);
+		snprintf(sendbuf, 49, "Pot %d read %d", index, current_readings.potentiometers[index]);
 		debug_send(sendbuf);
 		
-		if (pot_index > POT_PINKY_3 && motor_index > MOTOR_THUMB)
-		{
-			pot_index = 0;
-			motor_index = 0;
-		}
-		
-		_delay_ms(100);
+		_delay_ms(10);
 	}
 }
-*/
+
 
 /*
 // MOTOR TEST

@@ -35,7 +35,12 @@ int read_pot(potentiometer pot_index, adc_readings_t *dest)
 	if (read(adc_ch, &result)) return 1;
 	if (toggle_adc_ss(adc_num)) return 1;
 	
-	dest->potentiometers[pot_index] = result;
+	// Convert the reading to fixed point
+	result <<= POT_FILTER_SHIFT;
+	// Save the previous reading from dest
+	uint16_t prev_out = dest->potentiometers[pot_index];
+	// Perform the filtering operation and store the new filter output
+	dest->potentiometers[pot_index] = prev_out + ((result - prev_out) >> POT_FILTER_SHIFT);
 	return 0;
 }
 

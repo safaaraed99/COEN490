@@ -9,6 +9,11 @@
 #ifndef SPI_H_
 #define SPI_H_
 
+// Determines the scaling factor used for the noise filtering on the potentiometer readings.
+// The scaling factor is 1/2^N where N is the value defined here.
+// The division is implemented by a right shift.
+#define POT_FILTER_SHIFT 3
+
 #include <avr/io.h>
 #include <stdint.h>
 
