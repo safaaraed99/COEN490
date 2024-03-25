@@ -65,7 +65,7 @@ int main(void)
 }
 */
 
-
+/*
 // SPI TEST
 int main(void)
 {
@@ -97,6 +97,8 @@ int main(void)
 			if (conv >= 0 && conv <= 13)
 			{
 				index = (uint8_t)conv;
+				snprintf(sendbuf, 49, "Set index to %d", index);
+				debug_send(sendbuf);
 			}
 			else
 			{
@@ -105,16 +107,20 @@ int main(void)
 			}
 		}
 		
+		// Save old reading
+		old_readings.potentiometers[index] = current_readings.potentiometers[index];
+		// Get new reading
 		read_pot(index, &current_readings);
-		snprintf(sendbuf, 49, "Pot %d read %d", index, current_readings.potentiometers[index]);
+		// Print debug message
+		snprintf(sendbuf, 49, "Pot %d read %d (prev %d)", index, current_readings.potentiometers[index], old_readings.potentiometers[index]);
 		debug_send(sendbuf);
 		
 		_delay_ms(10);
 	}
 }
+*/
 
 
-/*
 // MOTOR TEST
 int main(void)
 {
@@ -124,16 +130,53 @@ int main(void)
 	setup_uart();
 	setup_motors();
 	
+	adc_readings_t current_readings;
+	adc_readings_t old_readings;
+	
+	memset(&current_readings, 0, sizeof(adc_readings_t));
+	memset(&old_readings, 0, sizeof(adc_readings_t));
+	
 	char sendbuf[50] = {0};
+	char recvbuf[50] = {0};
+	
+	uint8_t index = 0;
+	motor_direction direction = DIRECTION_FORWARD;
 	
 	sei();
 	// LOOP
 	while (1)
 	{
-		// TODO
+		size_t bytes_read = debug_recv(recvbuf, 49);
+		if (bytes_read > 0)
+		{
+			int conv = atoi(recvbuf);
+			if (conv >= 0 && conv <= 4)
+			{
+				index = (uint8_t)conv;
+				snprintf(sendbuf, 49, "Set index to %d", index);
+				debug_send(sendbuf);
+			}
+			else
+			{
+				strncpy(sendbuf, "Index malformed or out of range", 49);
+				debug_send(sendbuf);
+			}
+		}
+		
+		
+		
+		// Save old reading
+		old_readings.potentiometers[index] = current_readings.potentiometers[index];
+		// Get new reading
+		read_pot(index, &current_readings);
+		// Print debug message
+		snprintf(sendbuf, 49, "Pot %d read %d (prev %d)", index, current_readings.potentiometers[index], old_readings.potentiometers[index]);
+		debug_send(sendbuf);
+		
+		_delay_ms(10);
 	}
 }
-*/
+
 
 
 void setup_gpio(void)
