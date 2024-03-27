@@ -25,7 +25,7 @@ void setup_gpio(void);
 // Make sure you build after uncommenting the one you want and commenting the others, then upload.
 
 
-/*
+
 // DEBUG TEST
 int main(void)
 {
@@ -63,7 +63,7 @@ int main(void)
 		}
 	}
 }
-*/
+
 
 /*
 // SPI TEST
@@ -97,12 +97,12 @@ int main(void)
 			if (conv >= 0 && conv <= 13)
 			{
 				index = (uint8_t)conv;
-				snprintf(sendbuf, 49, "Set index to %d", index);
+				snprintf(sendbuf, 49, "Set index to %d\n", index);
 				debug_send(sendbuf);
 			}
 			else
 			{
-				strncpy(sendbuf, "Index malformed or out of range", 49);
+				strncpy(sendbuf, "Index malformed or out of range\n", 49);
 				debug_send(sendbuf);
 			}
 		}
@@ -112,15 +112,15 @@ int main(void)
 		// Get new reading
 		read_pot(index, &current_readings);
 		// Print debug message
-		snprintf(sendbuf, 49, "Pot %d read %d (prev %d)", index, current_readings.potentiometers[index], old_readings.potentiometers[index]);
+		snprintf(sendbuf, 49, "Pot %d read %d (prev %d)\n", index, current_readings.potentiometers[index] >> POT_FILTER_SHIFT, old_readings.potentiometers[index] >> POT_FILTER_SHIFT);
 		debug_send(sendbuf);
 		
-		_delay_ms(10);
+		_delay_ms(1000);
 	}
 }
 */
 
-
+/*
 // MOTOR TEST
 int main(void)
 {
@@ -143,6 +143,7 @@ int main(void)
 	motor_direction direction = DIRECTION_FORWARD;
 	
 	sei();
+	set_motor_enable(1);
 	// LOOP
 	while (1)
 	{
@@ -152,6 +153,7 @@ int main(void)
 			int conv = atoi(recvbuf);
 			if (conv >= 0 && conv <= 4)
 			{
+				set_motor_speed(index, 0);
 				index = (uint8_t)conv;
 				snprintf(sendbuf, 49, "Set index to %d", index);
 				debug_send(sendbuf);
@@ -163,20 +165,34 @@ int main(void)
 			}
 		}
 		
+		set_motor_phase(index, direction);
+		for (int spd = 0; spd < 200; spd += 5)
+		{
+			set_motor_speed(index, spd);
+			_delay_ms(1000);
+		}
 		
+		if (direction == DIRECTION_BACKWARD)
+		{
+			direction = DIRECTION_FORWARD;
+		}
+		else
+		{
+			direction = DIRECTION_BACKWARD;
+		}
 		
 		// Save old reading
-		old_readings.potentiometers[index] = current_readings.potentiometers[index];
+		old_readings.motors[index] = current_readings.motors[index];
 		// Get new reading
-		read_pot(index, &current_readings);
+		read_motor(index, &current_readings);
 		// Print debug message
-		snprintf(sendbuf, 49, "Pot %d read %d (prev %d)", index, current_readings.potentiometers[index], old_readings.potentiometers[index]);
+		snprintf(sendbuf, 49, "Motor %u read %u (prev %u)\n", index, current_readings.motors[index], old_readings.motors[index]);
 		debug_send(sendbuf);
 		
 		_delay_ms(10);
 	}
 }
-
+*/
 
 
 void setup_gpio(void)

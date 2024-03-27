@@ -15,8 +15,8 @@
 
 // The clock rate of the system is 8 MHz.
 // When not running the UART at double speed, UBRR = f_osc / (16*Baud) - 1
-// The below value is for 19200 baud.
-#define DEBUG_UBRR 25
+// The below value is for 38400 baud.
+#define DEBUG_UBRR 12
 
 // Circular buffers for debug send and receive.
 // When the main loop sends data, it's copied into the buffer.

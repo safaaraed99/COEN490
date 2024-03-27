@@ -8,6 +8,11 @@
 #include "spi.h"
 #include <stdlib.h>
 
+#define F_CPU 8000000UL
+#include "uart.h"
+#include <stdio.h>
+#include <util/delay.h>
+
 void setup_spi(void)
 {
 	// Set MOSI1 and SCK1 output
@@ -35,12 +40,34 @@ int read_pot(potentiometer pot_index, adc_readings_t *dest)
 	if (read(adc_ch, &result)) return 1;
 	if (toggle_adc_ss(adc_num)) return 1;
 	
+	char buf[50] = {0};
+		
+	snprintf(buf, 49, "Initial %x ", result);
+	debug_send(buf);
+	_delay_ms(10);
+	
 	// Convert the reading to fixed point
-	result <<= POT_FILTER_SHIFT;
+	int16_t r2 = (int16_t)result;
+	r2 <<= POT_FILTER_SHIFT;
+	snprintf(buf, 49, "Shifted %x ", r2);
+	debug_send(buf);
+	_delay_ms(10);
+	
 	// Save the previous reading from dest
-	uint16_t prev_out = dest->potentiometers[pot_index];
+	int16_t prev_out = dest->potentiometers[pot_index];
+	snprintf(buf, 49, "Previous %x ", prev_out);
+	debug_send(buf);
+	_delay_ms(10);
+	
 	// Perform the filtering operation and store the new filter output
-	dest->potentiometers[pot_index] = prev_out + ((result - prev_out) >> POT_FILTER_SHIFT);
+	int16_t temp = (r2 - prev_out) >> POT_FILTER_SHIFT;
+	snprintf(buf, 49, "Difference+shift %x ", temp);
+	debug_send(buf);
+	_delay_ms(10);
+	dest->potentiometers[pot_index] = prev_out + ((r2 - prev_out) >> POT_FILTER_SHIFT);
+	
+	
+	//dest->potentiometers[pot_index] = result;
 	return 0;
 }
 

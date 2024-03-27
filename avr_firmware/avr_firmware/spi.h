@@ -21,8 +21,8 @@
 
 typedef struct adc_readings 
 {
-	uint16_t potentiometers[14];
-	uint16_t motors[5];
+	int16_t potentiometers[14];
+	int16_t motors[5];
 } adc_readings_t;
 
 /**
