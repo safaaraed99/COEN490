@@ -37,6 +37,8 @@ void debug_send(char* msg);
  */
 size_t debug_recv(char* dest, size_t dest_len);
 
-// TODO Bluetooth communication
+void bt_send(char* msg);
+
+size_t bt_recv(char* dest, size_t dest_len);
 
 #endif /* UART_H_ */

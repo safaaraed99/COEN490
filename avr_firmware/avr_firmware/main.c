@@ -24,8 +24,7 @@ void setup_gpio(void);
 // There's the real main function for the final firmware and a bunch of tests for individual features.
 // Make sure you build after uncommenting the one you want and commenting the others, then upload.
 
-
-
+/*
 // DEBUG TEST
 int main(void)
 {
@@ -47,7 +46,7 @@ int main(void)
 			{
 				int sum = i + j;
 				int diff = i - j;
-				snprintf(sendbuf, 50, "%d + %d = %d; %d - %d = %d", i, j, sum, i, j, diff);
+				snprintf(sendbuf, 50, "%d + %d = %d; %d - %d = %d\n", i, j, sum, i, j, diff);
 				debug_send(sendbuf);
 				
 				// Busy wait, try reducing the limit to see how fast the data is pumped out of the debug send buffer
@@ -63,7 +62,38 @@ int main(void)
 		}
 	}
 }
+*/
 
+// BT TEST
+int main(void)
+{
+	setup_gpio();
+	setup_spi();
+	setup_uart();
+	setup_motors();
+	
+	char sendbuf[50] = {0};
+	//char recvbuf[50] = {0};
+	
+	sei();
+	while (1)
+	{
+		//char test[2] = {0b01010101, 0};
+		strncpy(sendbuf, "Testing\n", 9);
+		bt_send(sendbuf);
+		//debug_send(sendbuf);
+		
+		//// Echo back anything received
+		//size_t recv_cnt = bt_recv(recvbuf, 49);
+		//if (recv_cnt)
+		//{
+			//bt_send(recvbuf);
+			//debug_send(recvbuf);
+		//}
+		
+		_delay_ms(1000);
+	}
+}
 
 /*
 // SPI TEST
