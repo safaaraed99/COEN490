@@ -8,6 +8,7 @@
 #include "motor.h"
 
 #include <avr/io.h>
+#include <avr/interrupt.h>
 
 // TODO motor fault ISRs
 
@@ -46,6 +47,12 @@ void setup_motors(void)
 	TCCR2B = (1<<CS20);
 	// Default output compare to 0
 	OCR2B = 0;
+	
+	// Initialize pin change interrupts for motor fault
+	//PCICR = (1<<PCIE3) | (1<<PCIE2) | (1<<PCIE0);
+	//PCMSK3 = (1<<PCINT25) | (1<<PCINT24);
+	//PCMSK2 = (1<<PCINT20);
+	//PCMSK0 = (1<<PCINT7) | (1<<PCINT6);
 }
 
 int set_motor_speed(motor motor_num, uint8_t duty)
@@ -146,3 +153,18 @@ int set_motor_enable(uint8_t state)
 	
 	return 0;
 }
+
+//ISR(PCINT3_vect)
+//{
+	//
+//}
+//
+//ISR(PCINT2_vect)
+//{
+	//
+//}
+//
+//ISR(PCINT0_vect)
+//{
+	//
+//}

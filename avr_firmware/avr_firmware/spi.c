@@ -40,34 +40,15 @@ int read_pot(potentiometer pot_index, adc_readings_t *dest)
 	if (read(adc_ch, &result)) return 1;
 	if (toggle_adc_ss(adc_num)) return 1;
 	
-	char buf[50] = {0};
-		
-	snprintf(buf, 49, "Initial %x ", result);
-	debug_send(buf);
-	_delay_ms(10);
-	
 	// Convert the reading to fixed point
-	int16_t r2 = (int16_t)result;
-	r2 <<= POT_FILTER_SHIFT;
-	snprintf(buf, 49, "Shifted %x ", r2);
-	debug_send(buf);
-	_delay_ms(10);
-	
+	int16_t r2 = (int16_t)result << POT_FILTER_SHIFT;
+
 	// Save the previous reading from dest
 	int16_t prev_out = dest->potentiometers[pot_index];
-	snprintf(buf, 49, "Previous %x ", prev_out);
-	debug_send(buf);
-	_delay_ms(10);
 	
 	// Perform the filtering operation and store the new filter output
-	int16_t temp = (r2 - prev_out) >> POT_FILTER_SHIFT;
-	snprintf(buf, 49, "Difference+shift %x ", temp);
-	debug_send(buf);
-	_delay_ms(10);
 	dest->potentiometers[pot_index] = prev_out + ((r2 - prev_out) >> POT_FILTER_SHIFT);
 	
-	
-	//dest->potentiometers[pot_index] = result;
 	return 0;
 }
 
@@ -84,7 +65,14 @@ int read_motor(motor motor_index, adc_readings_t *dest)
 	if (read(motor_index, &result)) return 1;
 	if (toggle_adc_ss(2)) return 1;
 	
-	dest->motors[motor_index] = result;
+	// Convert the reading to fixed point
+	int16_t r2 = (int16_t)result << POT_FILTER_SHIFT;
+
+	// Save the previous reading from dest
+	int16_t prev_out = dest->motors[motor_index];
+	
+	// Perform the filtering operation and store the new filter output
+	dest->motors[motor_index] = prev_out + ((r2 - prev_out) >> POT_FILTER_SHIFT);
 	return 0;
 }
 

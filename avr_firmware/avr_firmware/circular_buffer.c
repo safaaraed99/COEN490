@@ -17,9 +17,12 @@ void circ_buf_init(volatile circular_buffer_t *buf)
 
 void circ_buf_write(volatile circular_buffer_t *buf, char* data)
 {
-	size_t data_len = strlen(data);
-	
-	for (size_t i = 0; i < data_len; i++)
+	circ_buf_write(buf, data, strlen(data));
+}
+
+void circ_buf_write(volatile circular_buffer_t *buf, char* data, size_t len)
+{
+	for (size_t i = 0; i < len; i++)
 	{
 		// Write from the data input to the buffer, and wrap the write index back around to 0 if it reaches BUF_SIZE.
 		buf->buffer[buf->write_idx] = data[i];
