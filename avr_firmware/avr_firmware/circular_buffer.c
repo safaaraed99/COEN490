@@ -15,12 +15,12 @@ void circ_buf_init(volatile circular_buffer_t *buf)
 	buf->write_idx = 0;
 }
 
-void circ_buf_write(volatile circular_buffer_t *buf, char* data)
+void circ_buf_write_str(volatile circular_buffer_t *buf, char* data)
 {
-	circ_buf_write(buf, data, strlen(data));
+	circ_buf_write_len(buf, data, strlen(data));
 }
 
-void circ_buf_write(volatile circular_buffer_t *buf, char* data, size_t len)
+void circ_buf_write_len(volatile circular_buffer_t *buf, char* data, size_t len)
 {
 	for (size_t i = 0; i < len; i++)
 	{

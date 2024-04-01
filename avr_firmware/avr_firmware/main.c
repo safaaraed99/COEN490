@@ -11,11 +11,18 @@
 #include <avr/interrupt.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <util/delay.h>
 
 #include "spi.h"
 #include "uart.h"
 #include "motor.h"
+
+// Used to track activity of motors so that we can return to the initial position afterwards
+static volatile bool exercise_started = false;
+static volatile bool motor_active[5];
+static volatile motor_direction motor_directions[5];
+static volatile int64_t motor_active_cycles[5];
 
 void setup_gpio(void);
 
@@ -23,6 +30,52 @@ void setup_gpio(void);
 // Uncomment ONLY ONE of the below main functions. Each one is commented with what it does.
 // There's the real main function for the final firmware and a bunch of tests for individual features.
 // Make sure you build after uncommenting the one you want and commenting the others, then upload.
+
+// REAL MAIN
+int main(void)
+{
+	// SETUP
+	setup_gpio();
+	setup_spi();
+	setup_uart();
+	setup_motors();
+	
+	// State: Current and previous ADC readings
+	adc_readings_t current_readings;
+	adc_readings_t old_readings;
+	
+	memset(&current_readings, 0, sizeof(adc_readings_t));
+	memset(&old_readings, 0, sizeof(adc_readings_t));
+	
+	// State: Next ADC values to query (one per iteration of the main loop)
+	potentiometer pot_index = POT_THUMB_1;
+	motor motor_index = MOTOR_PINKY;
+	
+	sei();
+	// LOOP
+	while (1)
+	{
+		if (pot_index <= POT_PINKY_3)
+		{
+			old_readings.potentiometers[pot_index] = current_readings.potentiometers[pot_index];
+			read_pot(pot_index, &current_readings);
+			pot_index++;
+		}
+		else if (motor_index <= MOTOR_THUMB)
+		{
+			old_readings.motors[motor_index] = current_readings.motors[motor_index];
+			read_motor(motor_index, &current_readings);
+			motor_index++;
+		}
+		else
+		{
+			pot_index = POT_THUMB_1;
+			motor_index = MOTOR_PINKY;
+		}
+		
+		
+	}
+}
 
 /*
 // DEBUG TEST
@@ -63,7 +116,7 @@ int main(void)
 	}
 }
 */
-
+/*
 // BT TEST
 int main(void)
 {
@@ -79,8 +132,8 @@ int main(void)
 	while (1)
 	{
 		//char test[2] = {0b01010101, 0};
-		strncpy(sendbuf, "Testing\n", 9);
-		bt_send(sendbuf);
+		strncpy(sendbuf, "ADD\n", 9);
+		debug_send(sendbuf);
 		//debug_send(sendbuf);
 		
 		//// Echo back anything received
@@ -94,7 +147,7 @@ int main(void)
 		_delay_ms(1000);
 	}
 }
-
+*/
 /*
 // SPI TEST
 int main(void)
@@ -223,7 +276,6 @@ int main(void)
 	}
 }
 */
-
 
 void setup_gpio(void)
 {

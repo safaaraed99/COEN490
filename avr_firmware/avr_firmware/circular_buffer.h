@@ -39,7 +39,7 @@ void circ_buf_init(volatile circular_buffer_t *buf);
  * 
  * \return void
  */
-void circ_buf_write(volatile circular_buffer_t *buf, char* data);
+void circ_buf_write_str(volatile circular_buffer_t *buf, char* data);
 
 /**
  * \brief Writes data into a circular buffer. Does not perform bounds checking; old data may be overwritten.
@@ -50,7 +50,7 @@ void circ_buf_write(volatile circular_buffer_t *buf, char* data);
  * 
  * \return void
  */
-void circ_buf_write(volatile circular_buffer_t *buf, char* data, size_t len);
+void circ_buf_write_len(volatile circular_buffer_t *buf, char* data, size_t len);
 
 /**
  * \brief Reads up to a given number of characters from a circular buffer. Returns early if there is no more data to read.
