@@ -13,6 +13,8 @@
 
 #include "glove_enums.h"
 
+#define MOTOR_COUNT 5
+
 void setup_motors(void);
 
 int set_motor_speed(motor motor_num, uint8_t duty);

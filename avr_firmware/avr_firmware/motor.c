@@ -9,8 +9,17 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <stdbool.h>
 
-// TODO motor fault ISRs
+#include "uart.h"
+
+// Used to track activity of motors so that we can return to the initial position afterwards
+volatile bool motor_active[MOTOR_COUNT];
+volatile motor_direction motor_current_direction[MOTOR_COUNT];
+volatile int64_t motor_active_cycles[MOTOR_COUNT];
+
+// ISR will set this so we can handle notifying the application in the main loop
+volatile bool motor_faulted[MOTOR_COUNT];
 
 void setup_motors(void)
 {
@@ -24,6 +33,8 @@ void setup_motors(void)
 	TCCR0A = (1<<COM0A1) | (1<<COM0B1) | (1<<WGM01) | (1<<WGM00);
 	// Set no prescaling
 	TCCR0B = (1<<CS00);
+	// Enable Timer0 interrupt so we can track how long a motor has been active
+	TIMSK0 = (1<<TOIE0);
 	// Default both output compares to 0
 	OCR0A = 0;
 	OCR0B = 0;
@@ -49,10 +60,10 @@ void setup_motors(void)
 	OCR2B = 0;
 	
 	// Initialize pin change interrupts for motor fault
-	//PCICR = (1<<PCIE3) | (1<<PCIE2) | (1<<PCIE0);
-	//PCMSK3 = (1<<PCINT25) | (1<<PCINT24);
-	//PCMSK2 = (1<<PCINT20);
-	//PCMSK0 = (1<<PCINT7) | (1<<PCINT6);
+	PCICR = (1<<PCIE3) | (1<<PCIE2) | (1<<PCIE0);
+	PCMSK3 = (1<<PCINT25) | (1<<PCINT24);
+	PCMSK2 = (1<<PCINT20);
+	PCMSK0 = (1<<PCINT7) | (1<<PCINT6);
 }
 
 int set_motor_speed(motor motor_num, uint8_t duty)
@@ -154,17 +165,57 @@ int set_motor_enable(uint8_t state)
 	return 0;
 }
 
-//ISR(PCINT3_vect)
-//{
-	//
-//}
-//
-//ISR(PCINT2_vect)
-//{
-	//
-//}
-//
-//ISR(PCINT0_vect)
-//{
-	//
-//}
+ISR(PCINT3_vect)
+{
+	if (!(PORTE & (1<<PORTE0)))
+	{
+		set_motor_enable(0);
+		motor_faulted[MOTOR_MIDDLE] = true;
+	}
+	if (!(PORTE & (1<<PORTE1)))
+	{
+		set_motor_enable(0);
+		motor_faulted[MOTOR_RING] = true;
+	}
+}
+
+ISR(PCINT2_vect)
+{
+	if (!(PORTD & (1<<PORTD4)))
+	{
+		set_motor_enable(0);
+		motor_faulted[MOTOR_PINKY] = true;
+	}
+}
+
+ISR(PCINT0_vect)
+{
+	if (!(PORTB & (1<<PORTB6)))
+	{
+		set_motor_enable(0);
+		motor_faulted[MOTOR_THUMB] = true;
+	}
+	if (!(PORTB & (1<<PORTB7)))
+	{
+		set_motor_enable(0);
+		motor_faulted[MOTOR_INDEX] = true;
+	}
+}
+
+ISR(TIMER0_OVF_vect)
+{
+	for (size_t i = 0; i < MOTOR_COUNT; i++)
+	{
+		if (motor_active[i])
+		{
+			if (motor_current_direction[i] == DIRECTION_FORWARD)
+			{
+				motor_active_cycles[i]++;
+			}
+			else
+			{
+				motor_active_cycles[i]--;
+			}
+		}
+	}
+}

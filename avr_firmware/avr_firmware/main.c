@@ -18,11 +18,12 @@
 #include "uart.h"
 #include "motor.h"
 
-// Used to track activity of motors so that we can return to the initial position afterwards
 static volatile bool exercise_started = false;
-static volatile bool motor_active[5];
-static volatile motor_direction motor_directions[5];
-static volatile int64_t motor_active_cycles[5];
+
+extern volatile bool motor_active[5];
+extern volatile motor_direction motor_directions[5];
+extern volatile int64_t motor_active_cycles[5];
+extern volatile bool motor_faulted[5];
 
 void setup_gpio(void);
 
@@ -40,14 +41,14 @@ int main(void)
 	setup_uart();
 	setup_motors();
 	
-	// State: Current and previous ADC readings
+	// Current and previous ADC readings, used to detect movement
 	adc_readings_t current_readings;
 	adc_readings_t old_readings;
 	
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
-	// State: Next ADC values to query (one per iteration of the main loop)
+	// Next ADC values to query (one per iteration of the main loop)
 	potentiometer pot_index = POT_THUMB_1;
 	motor motor_index = MOTOR_PINKY;
 	
@@ -55,10 +56,21 @@ int main(void)
 	// LOOP
 	while (1)
 	{
+		// Check for motor faults
+		for (size_t i = 0; i < MOTOR_COUNT; i++)
+		{
+			if (motor_faulted[i])
+			{
+				bt_send_motor_warning(i);
+			}
+		}
+		
+		// Get a reading
 		if (pot_index <= POT_PINKY_3)
 		{
 			old_readings.potentiometers[pot_index] = current_readings.potentiometers[pot_index];
 			read_pot(pot_index, &current_readings);
+			bt_send_reading(pot_index, current_readings.potentiometers[pot_index]);
 			pot_index++;
 		}
 		else if (motor_index <= MOTOR_THUMB)
@@ -73,7 +85,7 @@ int main(void)
 			motor_index = MOTOR_PINKY;
 		}
 		
-		
+		// Check for incoming commands
 	}
 }
 
@@ -293,4 +305,6 @@ void setup_gpio(void)
 	PORTE = (1<<PORTE2) | (1<<PORTE1) | (1<<PORTE0);
 	DDRE = (1<<DDE2);
 }
+
+
 
