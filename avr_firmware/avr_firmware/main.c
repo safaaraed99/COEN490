@@ -18,19 +18,15 @@
 #include "uart.h"
 #include "motor.h"
 
-static volatile bool exercise_started = false;
+// Number of timer 3 overflows to occur for ~0.5s of real time to pass
+#define TC3_OVF_HALF_SECOND 61
 
-extern volatile bool motor_active[5];
-extern volatile motor_direction motor_directions[5];
-extern volatile int64_t motor_active_cycles[5];
-extern volatile bool motor_faulted[5];
+extern volatile bool motor_faulted[MOTOR_COUNT];
+
+static volatile int8_t motor_cycles_remaining[MOTOR_COUNT];
 
 void setup_gpio(void);
-
-// READ ME!!!!!!!!
-// Uncomment ONLY ONE of the below main functions. Each one is commented with what it does.
-// There's the real main function for the final firmware and a bunch of tests for individual features.
-// Make sure you build after uncommenting the one you want and commenting the others, then upload.
+int8_t check_finger_flexion(adc_readings_t *current, adc_readings_t *prev, potentiometer knuckle1, potentiometer knuckle2, potentiometer knuckle3);
 
 // REAL MAIN
 int main(void)
@@ -41,18 +37,28 @@ int main(void)
 	setup_uart();
 	setup_motors();
 	
+	// Enable timer 3 to track motor active time
+	TCCR3B = (1<<CS32) | (1<<CS30);
+	TIMSK3 = (1<<TOIE3);
+	
 	// Current and previous ADC readings, used to detect movement
 	adc_readings_t current_readings;
 	adc_readings_t old_readings;
-	
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
-	// Next ADC values to query (one per iteration of the main loop)
+	bool exercise_started = false;
+	uint8_t motor_speed = 100;
+	
 	potentiometer pot_index = POT_THUMB_1;
-	motor motor_index = MOTOR_PINKY;
+	
+	char recvbuf[64] = {0};
+		
+	// Used to prevent triggering the motors until 255 iterations of the main loop have happened, while the filters stabilize.
+	uint8_t stabilize_delay = 255;
 	
 	sei();
+	set_motor_enable(1);
 	// LOOP
 	while (1)
 	{
@@ -61,31 +67,112 @@ int main(void)
 		{
 			if (motor_faulted[i])
 			{
+				exercise_started = false;
 				bt_send_motor_warning(i);
 			}
 		}
 		
-		// Get a reading
-		if (pot_index <= POT_PINKY_3)
+		// Check for incoming commands
+		// N.B. This should normally use the BT UART, but we are using an external module on the debug UART for the final demo because of timing issues.
+		debug_recv(recvbuf, 64);
+		if (recvbuf[0] == 0x85 && !exercise_started)
 		{
-			old_readings.potentiometers[pot_index] = current_readings.potentiometers[pot_index];
-			read_pot(pot_index, &current_readings);
-			bt_send_reading(pot_index, current_readings.potentiometers[pot_index]);
-			pot_index++;
+			// Set resistance, only while exercise is stopped.
+			// Higher resistance value => lower motor speed (smaller value set to 8 bit output compare register)
+			switch (recvbuf[1])
+			{
+				case 1:
+					motor_speed = 200;
+					break;
+				case 2:
+					motor_speed = 175;
+					break;
+				case 3:
+					motor_speed = 150;
+					break;
+				case 4:
+					motor_speed = 125;
+					break;
+				case 5:
+					motor_speed = 100;
+					break;
+				default:
+					break;
+			}
 		}
-		else if (motor_index <= MOTOR_THUMB)
+		else if (recvbuf[0] == 0x01)
 		{
-			old_readings.motors[motor_index] = current_readings.motors[motor_index];
-			read_motor(motor_index, &current_readings);
-			motor_index++;
+			// Start exercise
+			exercise_started = true;
+			//set_motor_enable(1);
 		}
-		else
+		else if (recvbuf[0] == 0x82)
 		{
-			pot_index = POT_THUMB_1;
-			motor_index = MOTOR_PINKY;
+			// Stop exercise
+			exercise_started = false;
+			//set_motor_enable(0);
 		}
 		
-		// Check for incoming commands
+		// Read all pots and motors
+		memcpy(&old_readings, &current_readings, sizeof(adc_readings_t));
+		for (potentiometer i = POT_THUMB_1; i <= POT_PINKY_3; i++)
+		{
+			read_pot(i, &current_readings);
+		}
+		for (motor i = MOTOR_PINKY; i <= MOTOR_THUMB; i++)
+		{
+			read_motor(i, &current_readings);
+		}
+
+		// Wait for all the filters to stabilize before doing anything else
+		if (stabilize_delay > 0)
+		{
+			stabilize_delay--;
+			continue;
+		}
+		
+		// Only send two readings per iteration to not overflow the send buffer
+		bt_send_reading(pot_index, current_readings.potentiometers[pot_index] >> POT_FILTER_SHIFT);
+		bt_send_reading(pot_index+1, current_readings.potentiometers[pot_index+1] >> POT_FILTER_SHIFT);
+		pot_index += 2;
+		if (pot_index > POT_PINKY_3)
+		{
+			pot_index = POT_THUMB_1;
+		}
+		
+		int8_t flexion[MOTOR_COUNT];
+		flexion[MOTOR_PINKY] = check_finger_flexion(&current_readings, &old_readings, POT_PINKY_1, POT_PINKY_2, POT_PINKY_3);
+		flexion[MOTOR_RING] = check_finger_flexion(&current_readings, &old_readings, POT_RING_1, POT_RING_2, POT_RING_3);
+		flexion[MOTOR_MIDDLE] = check_finger_flexion(&current_readings, &old_readings, POT_MIDDLE_1, POT_MIDDLE_2, POT_MIDDLE_3);
+		flexion[MOTOR_INDEX] = check_finger_flexion(&current_readings, &old_readings, POT_INDEX_1, POT_INDEX_2, POT_INDEX_3);
+		flexion[MOTOR_THUMB] = check_finger_flexion(&current_readings, &old_readings, POT_THUMB_1, POT_THUMB_2, POT_THUMB_2);
+		
+		for (motor i = MOTOR_PINKY; i <= MOTOR_THUMB; i++)
+		{
+			if (motor_cycles_remaining[i] > 0)
+			{
+				continue;
+			}
+			
+			if (flexion[i] > 0)
+			{
+				set_motor_phase(i, DIRECTION_FORWARD);
+				set_motor_speed(i, motor_speed);
+				motor_cycles_remaining[i] = TC3_OVF_HALF_SECOND;
+			}
+			else if (flexion[i] < 0)
+			{
+				set_motor_phase(i, DIRECTION_BACKWARD);
+				set_motor_speed(i, motor_speed);
+				motor_cycles_remaining[i] = TC3_OVF_HALF_SECOND;
+			}
+			else
+			{
+				set_motor_speed(i, 0);
+			}
+		}
+		
+		_delay_ms(10);
 	}
 }
 
@@ -231,7 +318,7 @@ int main(void)
 	memset(&current_readings, 0, sizeof(adc_readings_t));
 	memset(&old_readings, 0, sizeof(adc_readings_t));
 	
-	char sendbuf[50] = {0};
+	char sendbuf[64] = {0};
 	char recvbuf[50] = {0};
 	
 	uint8_t index = 0;
@@ -264,9 +351,17 @@ int main(void)
 		for (int spd = 0; spd < 200; spd += 5)
 		{
 			set_motor_speed(index, spd);
-			_delay_ms(1000);
+			_delay_ms(250);
+			// Save old reading
+			old_readings.motors[index] = current_readings.motors[index];
+			// Get new reading
+			read_motor(index, &current_readings);
+			// Print debug message
+			snprintf(sendbuf, 64, "Motor %u read %u (prev %u). Dir %d\n", index, current_readings.motors[index], old_readings.motors[index], direction);
+			debug_send(sendbuf);
 		}
 		
+		set_motor_speed(index, 0);
 		if (direction == DIRECTION_BACKWARD)
 		{
 			direction = DIRECTION_FORWARD;
@@ -275,15 +370,7 @@ int main(void)
 		{
 			direction = DIRECTION_BACKWARD;
 		}
-		
-		// Save old reading
-		old_readings.motors[index] = current_readings.motors[index];
-		// Get new reading
-		read_motor(index, &current_readings);
-		// Print debug message
-		snprintf(sendbuf, 49, "Motor %u read %u (prev %u)\n", index, current_readings.motors[index], old_readings.motors[index]);
-		debug_send(sendbuf);
-		
+			
 		_delay_ms(10);
 	}
 }
@@ -306,5 +393,31 @@ void setup_gpio(void)
 	DDRE = (1<<DDE2);
 }
 
+// Check if a finger is flexing. Returns 1 if it's more flexed than the previous iteration, -1 if it's less flexed, 0 if unchanged.
+int8_t check_finger_flexion(adc_readings_t *current, adc_readings_t *prev, potentiometer knuckle1, potentiometer knuckle2, potentiometer knuckle3)
+{
+	if (current->potentiometers[knuckle1] >> POT_FILTER_SHIFT < prev->potentiometers[knuckle1] >> POT_FILTER_SHIFT || 
+		current->potentiometers[knuckle2] >> POT_FILTER_SHIFT < prev->potentiometers[knuckle2] >> POT_FILTER_SHIFT || 
+		current->potentiometers[knuckle3] >> POT_FILTER_SHIFT < prev->potentiometers[knuckle3] >> POT_FILTER_SHIFT)
+	{
+		return 1;
+	}
+	else if (current->potentiometers[knuckle1] >> POT_FILTER_SHIFT > prev->potentiometers[knuckle1] >> POT_FILTER_SHIFT || 
+			 current->potentiometers[knuckle2] >> POT_FILTER_SHIFT > prev->potentiometers[knuckle2] >> POT_FILTER_SHIFT || 
+			 current->potentiometers[knuckle3] >> POT_FILTER_SHIFT > prev->potentiometers[knuckle3] >> POT_FILTER_SHIFT)
+	{
+		return -1;
+	}
+	return 0;
+}
 
-
+ISR(TIMER3_OVF_vect)
+{
+	for (motor i = MOTOR_PINKY; i <= MOTOR_THUMB; i++)
+	{
+		if (motor_cycles_remaining[i] > 0)
+		{
+			motor_cycles_remaining[i]--;
+		}
+	}
+}

@@ -40,8 +40,6 @@ void debug_send(char* msg);
  */
 size_t debug_recv(char* dest, size_t dest_len);
 
-void bt_send_ack(void);
-
 void bt_send_motor_warning(motor motor_num);
 
 void bt_send_reading(potentiometer pot_num, int16_t reading);

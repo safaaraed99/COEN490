@@ -71,17 +71,6 @@ size_t debug_recv(char* dest, size_t dest_len)
 	return bytes_read;
 }
 
-void bt_send_ack(void)
-{
-	static char opcode = 0x82;
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		// Write to debug buffer because BT UART isn't working
-		circ_buf_write_len(&debug_send_buf, &opcode, 1);
-		UCSR1B |= (1<<UDRIE1);
-	}
-}
-
 void bt_send_motor_warning(motor motor_num)
 {
 	char msg[2];

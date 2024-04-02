@@ -13,11 +13,6 @@
 
 #include "uart.h"
 
-// Used to track activity of motors so that we can return to the initial position afterwards
-volatile bool motor_active[MOTOR_COUNT];
-volatile motor_direction motor_current_direction[MOTOR_COUNT];
-volatile int64_t motor_active_cycles[MOTOR_COUNT];
-
 // ISR will set this so we can handle notifying the application in the main loop
 volatile bool motor_faulted[MOTOR_COUNT];
 
@@ -33,8 +28,6 @@ void setup_motors(void)
 	TCCR0A = (1<<COM0A1) | (1<<COM0B1) | (1<<WGM01) | (1<<WGM00);
 	// Set no prescaling
 	TCCR0B = (1<<CS00);
-	// Enable Timer0 interrupt so we can track how long a motor has been active
-	TIMSK0 = (1<<TOIE0);
 	// Default both output compares to 0
 	OCR0A = 0;
 	OCR0B = 0;
@@ -199,23 +192,5 @@ ISR(PCINT0_vect)
 	{
 		set_motor_enable(0);
 		motor_faulted[MOTOR_INDEX] = true;
-	}
-}
-
-ISR(TIMER0_OVF_vect)
-{
-	for (size_t i = 0; i < MOTOR_COUNT; i++)
-	{
-		if (motor_active[i])
-		{
-			if (motor_current_direction[i] == DIRECTION_FORWARD)
-			{
-				motor_active_cycles[i]++;
-			}
-			else
-			{
-				motor_active_cycles[i]--;
-			}
-		}
 	}
 }
