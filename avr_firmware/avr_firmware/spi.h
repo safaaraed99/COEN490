@@ -2,48 +2,27 @@
  * spi.h
  *
  * Created: 2024-03-13 4:24:38 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 
 #ifndef SPI_H_
 #define SPI_H_
 
+// Determines the scaling factor used for the noise filtering on the potentiometer readings.
+// The scaling factor is 1/2^N where N is the value defined here.
+// The division is implemented by a right shift.
+#define POT_FILTER_SHIFT 3
+
 #include <avr/io.h>
 #include <stdint.h>
 
-enum 
-{
-	POT_THUMB_1 = 0,
-	POT_THUMB_2 = 1,
-	POT_INDEX_1 = 2,
-	POT_INDEX_2 = 3,
-	POT_INDEX_3 = 4,
-	POT_MIDDLE_1 = 5,
-	POT_MIDDLE_2 = 6,
-	POT_MIDDLE_3 = 7,
-	POT_RING_1 = 8,
-	POT_RING_2 = 9,
-	POT_RING_3 = 10,
-	POT_PINKY_1 = 11,
-	POT_PINKY_2 = 12,
-	POT_PINKY_3 = 13
-};
-
-// N.B. The motor channels were connected in reverse order to make the PCB layout easier
-enum
-{
-	MOTOR_PINKY = 0,
-	MOTOR_RING = 1,
-	MOTOR_MIDDLE = 2,
-	MOTOR_INDEX = 3,
-	MOTOR_THUMB = 4
-};
+#include "glove_enums.h"
 
 typedef struct adc_readings 
 {
-	uint16_t potentiometers[14];
-	uint16_t motors[5];
+	int16_t potentiometers[14];
+	int16_t motors[5];
 } adc_readings_t;
 
 /**
@@ -63,7 +42,7 @@ void setup_spi(void);
  * 
  * \return int 0 if the operation was successful. Nonzero indicates an argument out of range.
  */
-int read_pot(uint8_t pot_index, adc_readings_t *dest);
+int read_pot(potentiometer pot_index, adc_readings_t *dest);
 
 /**
  * \brief Reads the motor current with the specified index and stores the result in an adc_readings_t struct.
@@ -73,7 +52,7 @@ int read_pot(uint8_t pot_index, adc_readings_t *dest);
  * 
  * \return int 0 if the operation was successful. Nonzero indicates an argument out of range.
  */
-int read_motor(uint8_t motor_index, adc_readings_t *dest);
+int read_motor(motor motor_index, adc_readings_t *dest);
 
 /**
  * \brief Toggles the slave select/chip select (SS/CS) pin of a particular ADC. SS pins are active low and idle high. Only one SS pin should be low at a time.

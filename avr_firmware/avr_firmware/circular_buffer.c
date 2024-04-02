@@ -2,7 +2,7 @@
  * circular_buffer.c
  *
  * Created: 2024-03-16 2:47:19 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 #include "circular_buffer.h"
@@ -15,11 +15,14 @@ void circ_buf_init(volatile circular_buffer_t *buf)
 	buf->write_idx = 0;
 }
 
-void circ_buf_write(volatile circular_buffer_t *buf, char* data)
+void circ_buf_write_str(volatile circular_buffer_t *buf, char* data)
 {
-	size_t data_len = strlen(data);
-	
-	for (size_t i = 0; i < data_len; i++)
+	circ_buf_write_len(buf, data, strlen(data));
+}
+
+void circ_buf_write_len(volatile circular_buffer_t *buf, char* data, size_t len)
+{
+	for (size_t i = 0; i < len; i++)
 	{
 		// Write from the data input to the buffer, and wrap the write index back around to 0 if it reaches BUF_SIZE.
 		buf->buffer[buf->write_idx] = data[i];

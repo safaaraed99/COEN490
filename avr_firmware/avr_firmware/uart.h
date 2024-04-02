@@ -2,7 +2,7 @@
  * uart.h
  *
  * Created: 2024-03-16 2:07:45 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 
@@ -10,6 +10,9 @@
 #define UART_H_
 
 #include <stdlib.h>
+#include <stdint.h>
+
+#include "glove_enums.h"
 
 /**
  * \brief Initializes UART0 and UART1. Must be called during startup.
@@ -37,6 +40,8 @@ void debug_send(char* msg);
  */
 size_t debug_recv(char* dest, size_t dest_len);
 
-// TODO Bluetooth communication
+void bt_send_motor_warning(motor motor_num);
+
+void bt_send_reading(potentiometer pot_num, int16_t reading);
 
 #endif /* UART_H_ */

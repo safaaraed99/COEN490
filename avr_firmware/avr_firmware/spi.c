@@ -2,11 +2,16 @@
  * spi.c
  *
  * Created: 2024-03-13 4:24:27 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 #include "spi.h"
 #include <stdlib.h>
+
+#define F_CPU 8000000UL
+#include "uart.h"
+#include <stdio.h>
+#include <util/delay.h>
 
 void setup_spi(void)
 {
@@ -18,7 +23,7 @@ void setup_spi(void)
 	SPCR1 = (1<<SPE1) | (1<<MSTR1) | (1<<SPR1);
 }
 
-int read_pot(uint8_t pot_index, adc_readings_t *dest)
+int read_pot(potentiometer pot_index, adc_readings_t *dest)
 {
 	if (pot_index > POT_PINKY_3 || dest == NULL)
 	{
@@ -35,11 +40,19 @@ int read_pot(uint8_t pot_index, adc_readings_t *dest)
 	if (read(adc_ch, &result)) return 1;
 	if (toggle_adc_ss(adc_num)) return 1;
 	
-	dest->potentiometers[pot_index] = result;
+	// Convert the reading to fixed point
+	int16_t r2 = (int16_t)result << POT_FILTER_SHIFT;
+
+	// Save the previous reading from dest
+	int16_t prev_out = dest->potentiometers[pot_index];
+	
+	// Perform the filtering operation and store the new filter output
+	dest->potentiometers[pot_index] = prev_out + ((r2 - prev_out) >> POT_FILTER_SHIFT);
+	
 	return 0;
 }
 
-int read_motor(uint8_t motor_index, adc_readings_t *dest)
+int read_motor(motor motor_index, adc_readings_t *dest)
 {
 	if (motor_index > MOTOR_THUMB || dest == NULL)
 	{
@@ -52,7 +65,14 @@ int read_motor(uint8_t motor_index, adc_readings_t *dest)
 	if (read(motor_index, &result)) return 1;
 	if (toggle_adc_ss(2)) return 1;
 	
-	dest->motors[motor_index] = result;
+	// Convert the reading to fixed point
+	int16_t r2 = (int16_t)result << POT_FILTER_SHIFT;
+
+	// Save the previous reading from dest
+	int16_t prev_out = dest->motors[motor_index];
+	
+	// Perform the filtering operation and store the new filter output
+	dest->motors[motor_index] = prev_out + ((r2 - prev_out) >> POT_FILTER_SHIFT);
 	return 0;
 }
 

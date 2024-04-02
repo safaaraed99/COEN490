@@ -1,0 +1,7 @@
+$log UDR1
+$startlog debug-out.log
+$repeat 10000
+	#100
+$endrep
+$stoplog
+$break

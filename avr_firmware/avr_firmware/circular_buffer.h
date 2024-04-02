@@ -2,7 +2,7 @@
  * circular_buffer.h
  *
  * Created: 2024-03-16 2:44:39 PM
- *  Author: matt_
+ *  Author: Matthew Faigan
  */ 
 
 
@@ -39,7 +39,18 @@ void circ_buf_init(volatile circular_buffer_t *buf);
  * 
  * \return void
  */
-void circ_buf_write(volatile circular_buffer_t *buf, char* data);
+void circ_buf_write_str(volatile circular_buffer_t *buf, char* data);
+
+/**
+ * \brief Writes data into a circular buffer. Does not perform bounds checking; old data may be overwritten.
+ * 
+ * \param buf A pointer to the buffer to write into.
+ * \param data A buffer of data to write.
+ * \param len The number of bytes to write.
+ * 
+ * \return void
+ */
+void circ_buf_write_len(volatile circular_buffer_t *buf, char* data, size_t len);
 
 /**
  * \brief Reads up to a given number of characters from a circular buffer. Returns early if there is no more data to read.
