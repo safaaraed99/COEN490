@@ -38,7 +38,9 @@ int main(void)
 	setup_motors();
 	
 	// Enable timer 3 to track motor active time
-	TCCR3B = (1<<CS32) | (1<<CS30);
+	// No prescaling
+	TCCR3B = (1<<CS30);
+	// Overflow interrupt enabled
 	TIMSK3 = (1<<TOIE3);
 	
 	// Current and previous ADC readings, used to detect movement
